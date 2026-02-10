@@ -1,0 +1,293 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                    String         @id @default(uuid())
+  email                 String         @unique
+  password              String
+  name                  String?
+  role                  String         @default("USER")
+  isActive              Boolean        @default(true)
+  emailVerified         Boolean        @default(false)
+  emailVerifiedAt       DateTime?
+  isOnboardingCompleted Boolean        @default(false)
+  currency              String         @default("INR")
+  theme                 String         @default("light")
+  completedTours        String[]       @default([])
+  notificationsEmail    Boolean        @default(false)
+  alertEmail            String?
+  notificationsNtfy     Boolean        @default(false)
+  ntfyTopic             String?
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+  accounts              Account[]
+  transactions          Transaction[]
+  budgets               Budget[]
+  subscriptions         Subscription[]
+  cards                 Card[]
+  categories            Category[]
+  accountTypes          AccountType[]
+  emailConfig           EmailConfig?
+  notifications         Notification[]
+  sessions              Session[]
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  title     String
+  message   String
+  type      String   @default("INFO")
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Account {
+  id                      String           @id @default(uuid())
+  name                    String
+  type                    String // "savings", "checking", "demat", "asset", "loan", "expense"
+  balance                 Float            @default(0.0)
+  startingBalance         Float            @default(0.0)
+  startDate               DateTime         @default(now())
+  trackHistoricData       Boolean          @default(false)
+  currency                String           @default("INR")
+  details                 String? // JSON string for extra details like interest rate, tenure, etc.
+  userId                  String
+  user                    User             @relation(fields: [userId], references: [id])
+  maskNumber              String?
+  transactions            Transaction[]    @relation("SourceAccount")
+  destinationTransactions Transaction[]    @relation("DestinationAccount")
+  investments             Investment[]
+  history                 AccountHistory[]
+  createdAt               DateTime         @default(now())
+  updatedAt               DateTime         @updatedAt
+  billingDay              Int?
+  dueDay                  Int?
+  creditLimit             Float?
+
+  // Fixed Deposit / Investment specific fields
+  principal    Float?
+  interestRate Float?
+  maturityDate DateTime?
+  tenure       Int? // in months
+
+  subscriptions Subscription[]
+}
+
+model Transaction {
+  id                   String    @id @default(uuid())
+  description          String
+  amount               Float
+  date                 DateTime  @default(now())
+  type                 String // "income", "expense", "transfer"
+  budgetId             String?
+  budget               Budget?   @relation(fields: [budgetId], references: [id])
+  categoryId           String?
+  category             Category? @relation(fields: [categoryId], references: [id])
+  accountId            String? // Optional for unsettled transactions
+  account              Account?  @relation("SourceAccount", fields: [accountId], references: [id])
+  destinationAccountId String?
+  destinationAccount   Account?  @relation("DestinationAccount", fields: [destinationAccountId], references: [id])
+  userId               String
+  user                 User      @relation(fields: [userId], references: [id])
+  status               String    @default("settled") // "settled", "unsettled"
+  metadata             String? // Store raw email snippet or JSON
+  externalId           String?   @unique // Store the Email Message-ID here
+  source               String?   @default("Manual")
+  billAttachment       String? // Store uploaded bill/receipt file path
+  bankTransactionId    String?   @unique
+  note                 String?
+  reminderAt           DateTime? // For snoozing notifications
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+}
+
+model Category {
+  id            String         @id @default(uuid())
+  name          String
+  type          String         @default("expense") // "income", "expense"
+  userId        String?
+  user          User?          @relation(fields: [userId], references: [id])
+  transactions  Transaction[]
+  budgets       Budget[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  subscriptions Subscription[]
+
+  @@unique([name, userId])
+}
+
+model Budget {
+  id           String        @id @default(uuid())
+  name         String
+  amount       Float
+  frequency    String        @default("custom")
+  startDate    DateTime?
+  endDate      DateTime?
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
+  categoryId   String?
+  category     Category?     @relation(fields: [categoryId], references: [id])
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Subscription {
+  id              String    @id @default(uuid())
+  name            String
+  amount          Float
+  type            String    @default("expense") // "income", "expense"
+  frequency       String // "weekly", "monthly", "quarterly", "yearly"
+  startDate       DateTime
+  nextPaymentDate DateTime
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  accountId       String?
+  account         Account?  @relation(fields: [accountId], references: [id])
+  categoryId      String?
+  category        Category? @relation(fields: [categoryId], references: [id])
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Card {
+  id            String   @id @default(uuid())
+  issuer        String
+  last4         String
+  dueAmount     Float
+  minimumAmount Float?
+  dueDate       DateTime
+  billingCycle  Int? // e.g., 15th of every month
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  createdAt     DateTime @default(now())
+}
+
+model EmailConfig {
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  emailUser         String
+  encryptedPassword String // STORED ENCRYPTED (AES), NOT HASHED
+  iv                String // Initialization Vector for encryption
+  host              String  @default("imap.gmail.com")
+  port              Int     @default(993)
+  tls               Boolean @default(true)
+
+  scanFrequency  Int      @default(24) // in hours (e.g., 6, 12, 24)
+  lastScannedAt  DateTime @default(now())
+  processingType String   @default("REGEX") // "REGEX", "AI" - Global setting
+
+  // Relation for Whitelisted Senders
+  monitoredSenders MonitoredSender[]
+}
+
+model MonitoredSender {
+  id            String      @id @default(uuid())
+  email         String // e.g. "no-reply@hdfcbank.com"
+  emailConfigId String
+  emailConfig   EmailConfig @relation(fields: [emailConfigId], references: [id], onDelete: Cascade)
+
+  // Per-sender configuration
+  pdfPasswords String[] @default([]) // Array of passwords to try for PDFs from this sender
+}
+
+model Currency {
+  id     String  @id @default(uuid())
+  code   String  @unique // e.g., "INR", "USD"
+  label  String // e.g., "₹ RUPEE", "$ DOLLAR"
+  symbol String? // e.g., "₹", "$"
+}
+
+model InvestmentType {
+  id   String @id @default(uuid())
+  name String @unique // e.g., "Stocks", "Mutual Funds"
+}
+
+model AccountType {
+  id       String  @id @default(uuid())
+  name     String
+  category String  @default("asset") // "asset", "liability"
+  userId   String?
+  user     User?   @relation(fields: [userId], references: [id])
+
+  @@unique([name, userId])
+}
+
+model Investment {
+  id              String   @id @default(uuid())
+  accountId       String
+  account         Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  type            String // "stock" or "mutual_fund"
+  symbol          String // Ticker symbol for Yahoo Finance
+  name            String // Display name
+  quantity        Float
+  buyPrice        Float // Price at purchase
+  buyDate         DateTime
+  currentPrice    Float    @default(0.0) // Updated via Yahoo Finance
+  lastPriceUpdate DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model AccountHistory {
+  id        String   @id @default(uuid())
+  accountId String
+  account   Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  balance   Float
+  date      DateTime @default(now())
+  source    String   @default("auto") // "auto", "manual", "investment"
+  createdAt DateTime @default(now())
+}
+
+// Better Auth Models
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  token     String   @unique
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  id         String   @id @default(uuid())
+  identifier String // email or user ID
+  token      String   @unique
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  @@unique([identifier, token])
+}
+
+model OAuthAccount {
+  id                String   @id @default(uuid())
+  userId            String
+  provider          String // "google", "github", 
+  providerAccountId String
+  accessToken       String?
+  refreshToken      String?
+  expiresAt         DateTime?
+  scope             String?
+  tokenType         String?
+  idToken           String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
