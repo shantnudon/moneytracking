@@ -190,7 +190,7 @@ export default function CategoriesPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
         <div className="lg:col-span-5 h-75 border border-foreground p-8 flex flex-col items-center justify-center relative bg-background">
           <div className="absolute top-4 left-4">
-            <p className="text-xs font-black uppercase tracking-widest text-zinc-400">
+            <p className="text-xs font-black uppercase tracking-widest text-foreground/69">
               Spend Distribution
             </p>
           </div>
@@ -229,7 +229,7 @@ export default function CategoriesPage() {
             </PieChart>
           </ResponsiveContainer>
           <div className="absolute flex flex-col items-center">
-            <p className="text-[8px] font-black uppercase text-zinc-400">
+            <p className="text-[8px] font-black uppercase text-foreground/69">
               Total Spend
             </p>
             <p className="text-sm font-black italic">
@@ -245,7 +245,7 @@ export default function CategoriesPage() {
               className="border border-foreground/5 p-6 flex flex-col justify-between hover:border-foreground transition-all bg-background"
             >
               <div className="flex justify-between items-start">
-                <span className="text-xs font-black uppercase tracking-widest text-zinc-400">
+                <span className="text-xs font-black uppercase tracking-widest text-foreground/69">
                   {cat.name}
                 </span>
                 <span className="text-xs font-black italic">
@@ -264,7 +264,7 @@ export default function CategoriesPage() {
             </div>
           ))}
           {categorySpend.length === 0 && (
-            <div className="col-span-2 flex items-center justify-center border border-dashed border-black/10 py-12">
+            <div className="col-span-2 flex items-center justify-center border border-dashed border-foreground/10 py-12">
               <p className="text-xs font-black uppercase tracking-widest text-zinc-300 italic">
                 No spend data for this period
               </p>
@@ -281,13 +281,13 @@ export default function CategoriesPage() {
               className="border border-foreground p-6 group hover:bg-foreground hover:text-background transition-all duration-300 bg-background"
             >
               <div className="flex justify-between items-start mb-4">
-                <span className="text-xs font-black uppercase tracking-widest text-zinc-400 group-hover:text-zinc-500">
+                <span className="text-xs font-black uppercase tracking-widest text-foreground/69 group-hover:text-zinc-500">
                   {category.type}
                 </span>
                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
                     onClick={() => handleEdit(category)}
-                    className="p-1 hover:bg-white hover:text-black transition-colors"
+                    className="p-1 hover:bg-white hover:text-foreground transition-colors"
                   >
                     <svg
                       width="14"
@@ -303,7 +303,7 @@ export default function CategoriesPage() {
                   </button>
                   <button
                     onClick={() => handleDelete(category.id)}
-                    className="p-1 hover:bg-white hover:text-black transition-colors"
+                    className="p-1 hover:bg-white hover:text-foreground transition-colors"
                   >
                     <svg
                       width="14"

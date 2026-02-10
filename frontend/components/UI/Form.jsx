@@ -11,7 +11,7 @@ export function FormInput({
   return (
     <div className={`space-y-1 ${className}`}>
       {label && (
-        <label className="text-xs] sm:text-xs font-black uppercase text-zinc-400">
+        <label className="text-xs sm:text-xs font-black uppercase text-foreground/69">
           {label}
         </label>
       )}
@@ -40,7 +40,7 @@ export function FormSelect({
   return (
     <div className={`space-y-1 ${className}`}>
       {label && (
-        <label className="text-xs] sm:text-xs font-black uppercase text-zinc-400">
+        <label className="text-xs sm:text-xs font-black uppercase text-foreground/69">
           {label}
         </label>
       )}
@@ -50,9 +50,9 @@ export function FormSelect({
         required={required}
         className="w-full border-b border-foreground/20 py-2 text-xs sm:text-xs font-bold focus:border-foreground outline-none bg-transparent appearance-none text-foreground"
       >
-        <option value="">{placeholder}</option>
+        <option value="" selected className="bg-background text-foreground">{placeholder}</option>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
+          <option key={option.value} value={option.value} className="bg-background text-foreground">
             {option.label.toUpperCase()}
           </option>
         ))}
@@ -74,7 +74,7 @@ export function FormDateInput({
   return (
     <div className={`space-y-1 ${className}`}>
       {label && (
-        <label className="text-xs font-black uppercase text-zinc-400">
+        <label className="text-xs font-black uppercase text-foreground/69">
           {label}
         </label>
       )}
@@ -104,7 +104,7 @@ export function FormTextarea({
   return (
     <div className={`space-y-1 ${className}`}>
       {label && (
-        <label className="text-xs font-black uppercase text-zinc-400">
+        <label className="text-xs font-black uppercase text-foreground/69">
           {label}
         </label>
       )}
@@ -132,7 +132,7 @@ export function FormFileInput({
   return (
     <div className={`space-y-1 ${className}`}>
       {label && (
-        <label className="text-xs font-black uppercase text-zinc-400">
+        <label className="text-xs font-black uppercase text-foreground/69">
           {label}
         </label>
       )}
@@ -164,7 +164,7 @@ export function FormCheckbox({ label, checked, onChange, className = "" }) {
         className="w-4 h-4 border-2 border-foreground rounded-none checked:bg-foreground appearance-none cursor-pointer relative checked:after:content-['✓'] checked:after:absolute checked:after:text-background checked:after:text-xs checked:after:top-px checked:after:left-0.5 bg-transparent"
       />
       {label && (
-        <label className="text-xs font-black uppercase text-zinc-400 cursor-pointer select-none">
+        <label className="text-xs font-black uppercase text-foreground/69 cursor-pointer select-none">
           {label}
         </label>
       )}

@@ -68,7 +68,7 @@ export default function Sidebar() {
     <>
       <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="fixed top-4 left-4 z-50 lg:hidden p-2 bg-background border border-(--foreground) hover:bg-foreground hover:text-background transition-colors"
+        className="fixed top-4 left-4 z-50 lg:hidden p-2 bg-background border border-foreground hover:bg-foreground hover:text-background transition-colors"
         aria-label="Toggle menu"
       >
         {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -76,14 +76,14 @@ export default function Sidebar() {
 
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+          className="fixed inset-0 bg-foreground/50 z-30 lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
 
       <div
         id="tour-sidebar"
-        className={`h-screen flex flex-col bg-background border-r border-(--foreground) transition-all duration-300 z-40 
+        className={`h-screen flex flex-col bg-background border-r border-foreground transition-all duration-300 z-40 
           ${isCollapsed ? "w-20" : "w-72"}
           ${
             isMobileMenuOpen
@@ -92,7 +92,7 @@ export default function Sidebar() {
           }
         `}
       >
-        <div className="p-4 flex items-center justify-between h-16 border-b border-(--foreground)">
+        <div className="p-4 flex items-center justify-between h-16 border-b border-foreground">
           {!isCollapsed && (
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-foreground text-background flex items-center justify-center font-black italic text-lg">
@@ -110,7 +110,7 @@ export default function Sidebar() {
           )}
         </div>
 
-        <div className="flex-1 overflow-y-auto divide-y divide-foreground/5">
+        <div className="flex-1 overflow-y-auto no-scrollbar divide-y divide-foreground/5">
           <nav className="flex flex-col">
             {allMenuItems.map((item) => {
               const isActive = pathname

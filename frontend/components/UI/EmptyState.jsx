@@ -6,7 +6,7 @@ export default function EmptyState({
 }) {
   return (
     <div
-      className={`py-24 text-center border border-dashed border-black/10 ${className}`}
+      className={`py-24 text-center border border-dashed border-foreground/10 ${className}`}
     >
       {Icon && (
         <div className="flex justify-center mb-4">

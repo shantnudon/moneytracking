@@ -15,7 +15,7 @@ export function Table({ children, className = "" }) {
 export function TableHeader({ children }) {
   return (
     <thead>
-      <tr className="border-b-2 border-foreground text-xs] sm:text-xs font-black uppercase tracking-widest text-muted">
+      <tr className="border-b-2 border-foreground text-xs sm:text-xs font-black uppercase tracking-widest text-muted">
         {children}
       </tr>
     </thead>

@@ -24,17 +24,17 @@ const FixedDepositView = ({
         <div className="flex justify-between items-start">
           <div className="space-y-6 flex-1">
             <div>
-              <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-1">
+              <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-1">
                 Principal Amount
               </p>
-              <h2 className="text-5xl font-black tracking-tighter italic text-black">
+              <h2 className="text-5xl font-black tracking-tighter italic text-foreground">
                 {formatCurrency(account.balance)}
               </h2>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-4 border-t border-black/5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-4 border-t border-foreground/5">
               <div>
-                <div className="flex items-center gap-2 text-zinc-400 mb-1">
+                <div className="flex items-center gap-2 text-foreground/69 mb-1">
                   <Percent size={12} className="font-black" />
                   <span className="text-xs font-black uppercase tracking-widest">
                     Rate
@@ -45,7 +45,7 @@ const FixedDepositView = ({
                 </p>
               </div>
               <div>
-                <div className="flex items-center gap-2 text-zinc-400 mb-1">
+                <div className="flex items-center gap-2 text-foreground/69 mb-1">
                   <Clock size={12} />
                   <span className="text-xs font-black uppercase tracking-widest">
                     Tenure
@@ -56,7 +56,7 @@ const FixedDepositView = ({
                 </p>
               </div>
               <div>
-                <div className="flex items-center gap-2 text-zinc-400 mb-1">
+                <div className="flex items-center gap-2 text-foreground/69 mb-1">
                   <Calendar size={12} />
                   <span className="text-xs font-black uppercase tracking-widest">
                     Opened
@@ -69,7 +69,7 @@ const FixedDepositView = ({
                 </p>
               </div>
               <div>
-                <div className="flex items-center gap-2 text-zinc-400 mb-1">
+                <div className="flex items-center gap-2 text-foreground/69 mb-1">
                   <Landmark size={12} />
                   <span className="text-xs font-black uppercase tracking-widest">
                     Maturity
@@ -85,8 +85,8 @@ const FixedDepositView = ({
           </div>
           <div className="text-right flex flex-col items-end gap-4">
             <Badge variant="warning">FIXED DEPOSIT</Badge>
-            <div className="bg-zinc-50 p-4 border border-black/5 text-right">
-              <p className="text-xs] font-black uppercase tracking-widest text-zinc-400 mb-1">
+            <div className="bg-foreground p-4 border border-foreground/5 text-right">
+              <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-1">
                 Est. Maturity Value
               </p>
               <p className="text-xl font-black italic text-green-600">

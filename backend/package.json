@@ -1,5 +1,5 @@
 {
-  "name": "moneytracking/backend",
+  "name": "moneytracker/backend",
   "version": "0.1.0",
   "private": false,
   "main": "index.js",

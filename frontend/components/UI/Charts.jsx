@@ -30,7 +30,7 @@ export function ChartContainer({
         </div>
       )}
       <div
-        className="w-full border-l border-b border-black/5 pt-4"
+        className="w-full border-l border-b border-foreground/5 pt-4"
         style={{ height: `${height}px` }}
       >
         {children}

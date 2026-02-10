@@ -554,7 +554,7 @@ export default function TransactionsPage() {
                   <TableCell>
                     <Badge size="sm">PRIORITY</Badge>
                   </TableCell>
-                  <TableCell className="text-xs text-zinc-400 font-bold uppercase">
+                  <TableCell className="text-xs text-foreground/69 font-bold uppercase">
                     N/A
                   </TableCell>
                   <TableCell align="right" className="text-sm font-black">
@@ -585,14 +585,14 @@ export default function TransactionsPage() {
                       {t.billAttachment && (
                         <FileUp
                           size={12}
-                          className="text-zinc-400"
+                          className="text-foreground/69"
                           title="Bill Attached"
                         />
                       )}
                     </div>
                     {t.note && (
                       <div
-                        className="text-xs text-zinc-400 font-medium italic truncate max-w-50"
+                        className="text-xs text-foreground/69 font-medium italic truncate max-w-50"
                         title={t.note}
                       >
                         {t.note}
@@ -606,12 +606,12 @@ export default function TransactionsPage() {
                   </div>
                 </TableCell>
                 <TableCell>
-                  <span className="text-xs font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-500">
+                  <span className="text-xs font-bold uppercase tracking-widest text-foreground/69 group-hover:text-zinc-500">
                     {t.category?.name || "Uncategorized"}
                   </span>
                 </TableCell>
                 <TableCell>
-                  <span className="text-xs font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-500">
+                  <span className="text-xs font-bold uppercase tracking-widest text-foreground/69 group-hover:text-zinc-500">
                     {t.budget?.name || "No Budget"}
                   </span>
                 </TableCell>
@@ -687,24 +687,24 @@ export default function TransactionsPage() {
             ))}
 
             {transactions.length === 0 && activeTab !== "unsettled" && (
-              <EmptyTableState message="No movements recorded" />
+              <EmptyTableState message="No Transactions recorded" />
             )}
           </TableBody>
         </Table>
       </div>
 
       {pagination.totalPages > 1 && (
-        <div className="mt-8 flex items-center justify-between border border-black p-4 bg-white">
-          <div className="text-xs font-black uppercase tracking-widest text-zinc-400">
-            Showing
-            <span className="text-black">
+        <div className="mt-8 flex items-center justify-between  p-4 ">
+          <div className="text-xs font-black uppercase tracking-widest text-foreground/69">
+            Showing {" "}
+            <span className="text-foreground">
               {(pagination.page - 1) * pagination.limit + 1}
             </span>
-            to
-            <span className="text-black">
+           {" "} to {" "}
+            <span className="text-foreground">
               {Math.min(pagination.page * pagination.limit, pagination.total)}
             </span>
-            of <span className="text-black">{pagination.total}</span> entries
+           {" "} of{" "} <span className="text-foreground">{pagination.total}</span> entries
           </div>
           <div className="flex gap-2">
             <IconButton
@@ -714,7 +714,7 @@ export default function TransactionsPage() {
               variant="border"
               size={16}
             />
-            <div className="flex items-center px-4 border border-black text-xs font-black italic">
+            <div className="flex items-center px-4 border border-foreground text-xs font-black italic">
               PAGE {pagination.page} / {pagination.totalPages}
             </div>
             <IconButton
@@ -853,7 +853,7 @@ export default function TransactionsPage() {
 
                 if (minAcc?.startDate) {
                   return (
-                    <p className="absolute -bottom-4 left-0 text-[8px] text-zinc-400 font-bold uppercase">
+                    <p className="absolute -bottom-4 left-0 text-[8px] text-foreground/69 font-bold uppercase">
                       Tracking starts:{" "}
                       {new Date(minAcc.startDate).toLocaleDateString()}
                     </p>
@@ -989,7 +989,7 @@ export default function TransactionsPage() {
 
           {editingTransaction?.billAttachment && (
             <div className="flex items-center gap-2 pt-2">
-              <span className="text-xs font-black uppercase text-zinc-400">
+              <span className="text-xs font-black uppercase text-foreground/69">
                 Attachment:
               </span>
               <a
@@ -1000,7 +1000,7 @@ export default function TransactionsPage() {
                 }`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-bold text-black underline hover:no-underline flex items-center gap-1"
+                className="text-xs font-bold text-foreground underline hover:no-underline flex items-center gap-1"
               >
                 <FileUp size={14} />
                 VIEW ATTACHED BILL

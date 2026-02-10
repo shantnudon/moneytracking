@@ -9,7 +9,7 @@ export default function PageLayout({
 }) {
   return (
     <div className="min-h-full bg-background p-4 sm:p-6 md:p-8 lg:p-12 text-foreground font-sans animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 md:mb-8 pb-4 border-b border-foreground/10">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 md:mb-8 pb-4 border-b border-foreground">
         <div>
           <h1 className="text-3xl sm:text-4xl font-black tracking-tighter uppercase italic text-foreground">
             {title}

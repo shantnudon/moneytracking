@@ -49,10 +49,10 @@ export default function Modal({
   };
 
   return (
-    <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto">
+    <div className="fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto">
       <div
         ref={modalRef}
-        className={`bg-white border border-black p-4 sm:p-6 md:p-8 w-full ${sizeClasses[size]} animate-in zoom-in-95 duration-200 shadow-2xl my-8 max-h-[90vh] overflow-y-auto`}
+        className={`bg-background border border-foreground p-4 sm:p-6 md:p-8 w-full ${sizeClasses[size]} animate-in zoom-in-95 duration-200 shadow-2xl my-8 max-h-[90vh] overflow-y-auto no-scrollbar`}
       >
         <div className="flex justify-between items-center mb-4 sm:mb-6 md:mb-8">
           <h2 className="text-lg sm:text-xl font-black uppercase tracking-tighter italic">

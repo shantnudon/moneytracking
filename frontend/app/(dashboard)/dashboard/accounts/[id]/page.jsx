@@ -117,7 +117,7 @@ const AccountDetailPage = () => {
   if (!account) {
     return (
       <div className="p-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-background">
           Account not found
         </h2>
         <button
@@ -319,13 +319,13 @@ const AccountDetailPage = () => {
                 .map((entry) => (
                   <div
                     key={entry.id}
-                    className="flex justify-between items-center py-3 border-b border-black/5 last:border-0"
+                    className="flex justify-between items-center py-3 border-b border-foreground/5 last:border-0"
                   >
                     <div>
                       <p className="text-sm font-bold uppercase tracking-tighter">
                         {new Date(entry.date).toLocaleDateString()}
                       </p>
-                      <p className="text-xs font-black uppercase tracking-widest text-zinc-400">
+                      <p className="text-xs font-black uppercase tracking-widest text-foreground/69">
                         {entry.source}
                       </p>
                     </div>
@@ -335,7 +335,7 @@ const AccountDetailPage = () => {
                   </div>
                 ))}
               {history.length === 0 && (
-                <p className="text-sm text-zinc-400 text-center py-4 italic uppercase font-bold">
+                <p className="text-sm text-foreground/69 text-center py-4 italic uppercase font-bold">
                   No history entries yet.
                 </p>
               )}
@@ -345,16 +345,16 @@ const AccountDetailPage = () => {
           <Card title="Account Details" icon={Settings}>
             <div className="space-y-4 text-xs font-bold uppercase tracking-tight">
               <div className="flex justify-between">
-                <span className="text-zinc-400">Currency</span>
+                <span className="text-foreground/69">Currency</span>
                 <span>{account.currency}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-400">Created</span>
+                <span className="text-foreground/69">Created</span>
                 <span>{new Date(account.createdAt).toLocaleDateString()}</span>
               </div>
               {account.maskNumber && (
                 <div className="flex justify-between">
-                  <span className="text-zinc-400">Account Number</span>
+                  <span className="text-foreground/69">Account Number</span>
                   <span className="tracking-widest">
                     ****{account.maskNumber}
                   </span>

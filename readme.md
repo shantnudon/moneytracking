@@ -29,8 +29,8 @@ The fastest way to get MoneyTracker running is via Docker.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/shantnudon/moneytracking.git
-   cd moneytracking
+   git clone https://github.com/shantnudon/moneytracker.git
+   cd moneytracker
    ```
 
 2. **Setup environment variables:**

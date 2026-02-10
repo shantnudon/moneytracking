@@ -156,7 +156,7 @@ export default function BudgetsPage() {
       {budgets.length > 0 ? (
         <div
           id="tour-budgets-grid"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-black"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-foreground"
         >
           {budgets.map((budget) => (
             <GridCard
@@ -170,7 +170,7 @@ export default function BudgetsPage() {
                 <h2 className="text-3xl font-black tracking-tighter italic">
                   {formatCurrency(budget.amount, user?.currency || "INR")}
                 </h2>
-                <div className="h-px w-full bg-black/10 group-hover:bg-white/20" />
+                <div className="h-px w-full bg-foreground/10 group-hover:bg-white/20" />
               </div>
 
               <div className="pt-8">

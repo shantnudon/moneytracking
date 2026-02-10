@@ -47,23 +47,24 @@ const Signup = ({ onSignup }) => {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col justify-center p-10 bg-white border border-black transition-all">
+    <div className="w-full h-full flex flex-col justify-center p-10 bg-card border border-foreground transition-colors">
       <div className="mb-10">
-        <h2 className="text-3xl dark:text-background font-black uppercase tracking-tighter italic">
+        <h2 className="text-3xl text-foreground font-black uppercase tracking-tighter italic">
           Register
         </h2>
-        <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-2">
+        <p className="text-xs font-bold text-foreground/70 uppercase tracking-widest mt-2">
           Create an account
         </p>
       </div>
 
-      <form className="flex flex-col gap-6 dark:text-background " onSubmit={handleSubmit}>
-        <div className="space-y-1 ">
-          <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ">
+      <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+        {/* Full Name Field */}
+        <div className="space-y-1">
+          <label className="text-xs font-black uppercase tracking-widest text-foreground/70">
             Full Name
           </label>
           <input
-            className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all uppercase placeholder-zinc-200 "
+            className="w-full border-b border-foreground/20 py-2 text-sm font-black focus:border-foreground outline-none transition-all uppercase placeholder:text-foreground/30 bg-transparent text-foreground"
             name="name"
             placeholder="E.G. TONY MONTANA"
             autoComplete="name"
@@ -74,12 +75,13 @@ const Signup = ({ onSignup }) => {
           />
         </div>
 
+        {/* Email Field */}
         <div className="space-y-1">
-          <label className="text-xs font-black uppercase tracking-widest text-zinc-400">
+          <label className="text-xs font-black uppercase tracking-widest text-foreground/70">
             Email
           </label>
           <input
-            className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all uppercase placeholder-zinc-200"
+            className="w-full border-b border-foreground/20 py-2 text-sm font-black focus:border-foreground outline-none transition-all uppercase placeholder:text-foreground/30 bg-transparent text-foreground"
             name="email"
             placeholder="tonymontana@scarface.com"
             autoComplete="email"
@@ -90,12 +92,13 @@ const Signup = ({ onSignup }) => {
           />
         </div>
 
+        {/* Password Field */}
         <div className="space-y-1">
-          <label className="text-xs font-black uppercase tracking-widest text-zinc-400">
+          <label className="text-xs font-black uppercase tracking-widest text-foreground/70">
             Password
           </label>
           <input
-            className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all placeholder-zinc-200"
+            className="w-full border-b border-foreground/20 py-2 text-sm font-black focus:border-foreground outline-none transition-all uppercase placeholder:text-foreground/30 bg-transparent text-foreground"
             name="password"
             autoComplete="new-password"
             type="password"
@@ -105,57 +108,59 @@ const Signup = ({ onSignup }) => {
           />
         </div>
 
-        <div className="flex gap-1 h-0.5 w-full bg-zinc-100">
+        {/* Password Strength Meter */}
+        <div className="flex gap-1 h-1 w-full">
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
               className={`h-full flex-1 transition-all duration-500 ${
-                i <= strengthCount ? "bg-black" : "bg-transparent"
+                i <= strengthCount ? "bg-foreground" : "bg-foreground/10"
               }`}
             />
           ))}
         </div>
 
+        {/* Requirements List */}
         <div className="space-y-2 mt-2">
           {requirements.map((req, idx) => (
             <div
               key={idx}
-              className={`flex items-center gap-3 text-xs] font-black uppercase tracking-widest transition-all duration-300 ${
-                req.met ? "text-black" : "text-zinc-300"
+              className={`flex items-center gap-3 text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+                req.met ? "text-foreground" : "text-foreground/30"
               }`}
             >
               <div
-                className={`w-3 h-3 border border-black flex items-center justify-center transition-all ${
+                className={`w-3 h-3 border border-foreground flex items-center justify-center transition-all ${
                   req.met
-                    ? "bg-black text-white"
+                    ? "bg-foreground text-background"
                     : "bg-transparent text-transparent"
                 }`}
               >
-                <Check size={8} />
+                <Check size={8} strokeWidth={4} />
               </div>
               <span>{req.label}</span>
             </div>
           ))}
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
           disabled={!isFormValid}
           className={`mt-4 w-full py-4 text-xs font-black uppercase tracking-widest transition-all duration-300
             ${
               isFormValid
-                ? "bg-black text-white hover:bg-zinc-800 cursor-pointer shadow-xl"
-                : "bg-zinc-100 text-zinc-300 cursor-not-allowed"
+                ? "bg-foreground text-background hover:opacity-90 cursor-pointer shadow-lg active:scale-[0.98]"
+                : "bg-foreground/10 text-foreground/30 cursor-not-allowed"
             }`}
         >
-          {/* {allConditionsMet ? "Initialize Account" : "Criteria Pending"} */}
           {isFormValid
             ? "Initialize Account"
             : name.length < 2
               ? "Enter Full Name"
               : !email.includes("@") || !email.includes(".")
                 ? "Invalid Email Address"
-                : "Password Doesnt Meet the Criteria"}
+                : "Criteria Pending"}
         </button>
       </form>
     </div>

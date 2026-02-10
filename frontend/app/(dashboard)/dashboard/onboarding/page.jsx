@@ -188,9 +188,9 @@ export default function Onboarding() {
   };
 
   const labelClass =
-    "text-xs font-black uppercase tracking-widest text-zinc-400 mb-2 block";
+    "text-xs font-black uppercase tracking-widest text-foreground/69 mb-2 block";
   const inputClass =
-    "w-full border-b border-black/20 py-2 text-sm font-bold focus:border-black outline-none transition-all bg-transparent uppercase placeholder-zinc-200";
+    "w-full border-b border-foreground/20 py-2 text-sm font-bold focus:border-foreground outline-none transition-all bg-transparent uppercase placeholder-zinc-200";
 
   const renderStepContent = () => {
     const step = steps[currentStep];
@@ -201,12 +201,12 @@ export default function Onboarding() {
             <div className="flex flex-col md:flex-row gap-12 items-start">
               <div className="space-y-4">
                 <label className={labelClass}>INIT IMAGE</label>
-                <div className="w-32 h-32 border border-black flex flex-col items-center justify-center group cursor-pointer hover:bg-black transition-all">
+                <div className="w-32 h-32 border border-foreground flex flex-col items-center justify-center group cursor-pointer hover:bg-foreground transition-all">
                   <Camera
                     size={20}
-                    className="group-hover:text-white transition-colors"
+                    className="group-hover:text-background transition-colors"
                   />
-                  <span className="text-[8px] font-black uppercase mt-2 group-hover:text-white">
+                  <span className="text-[8px] font-black uppercase mt-2 group-hover:text-background">
                     Upload
                   </span>
                 </div>
@@ -250,13 +250,13 @@ export default function Onboarding() {
 
             <div className="space-y-6">
               <label className={labelClass}>Visual Mode</label>
-              <div className="grid grid-cols-2 border border-black max-w-sm">
+              <div className="grid grid-cols-2 border border-foreground max-w-sm">
                 <button
                   onClick={() => setFormData({ ...formData, theme: "light" })}
                   className={`py-6 flex flex-col items-center gap-2 text-xs font-black uppercase tracking-widest transition-all ${
                     formData.theme === "light"
-                      ? "bg-black text-white"
-                      : "hover:bg-zinc-50"
+                      ? "bg-foreground text-background"
+                      : "hover:bg-muted50"
                   }`}
                 >
                   <Sun size={16} /> Light Mode
@@ -265,14 +265,14 @@ export default function Onboarding() {
                   onClick={() => setFormData({ ...formData, theme: "dark" })}
                   className={`py-6 flex flex-col items-center gap-2 text-xs font-black uppercase tracking-widest transition-all ${
                     formData.theme === "dark"
-                      ? "bg-black text-white"
-                      : "hover:bg-zinc-50"
+                      ? "bg-foreground text-background"
+                      : "hover:bg-muted50"
                   }`}
                 >
                   <Moon size={16} /> Dark Mode
                 </button>
               </div>
-              <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-tighter">
+              <p className="text-[9px] font-bold text-foreground/69 uppercase tracking-tighter">
                 System will re-render colors based on this preference.
               </p>
             </div>
@@ -285,11 +285,11 @@ export default function Onboarding() {
             {formData.bankAccounts.map((item, index) => (
               <div
                 key={index}
-                className="p-8 border border-black relative animate-in fade-in slide-in-from-bottom-2"
+                className="p-8 border border-foreground relative animate-in fade-in slide-in-from-bottom-2"
               >
                 <button
                   onClick={() => handleRemoveItem("bankAccounts", index)}
-                  className="absolute top-4 right-4 text-zinc-300 hover:text-black transition-colors"
+                  className="absolute top-4 right-4 text-zinc-300 hover:text-foreground transition-colors"
                 >
                   <X size={16} />
                 </button>
@@ -356,7 +356,7 @@ export default function Onboarding() {
             ))}
             <button
               onClick={() => handleAddItem("accounts")}
-              className="w-full py-8 border border-dashed border-black/20 text-xs font-black uppercase tracking-widest hover:border-black transition-all"
+              className="w-full py-8 border border-dashed border-foreground/20 text-xs font-black uppercase tracking-widest hover:border-foreground transition-all"
             >
               + Register Account
             </button>
@@ -366,10 +366,10 @@ export default function Onboarding() {
         return (
           <div className="space-y-12">
             {formData.creditCards.map((item, index) => (
-              <div key={index} className="p-8 border border-black relative">
+              <div key={index} className="p-8 border border-foreground relative">
                 <button
                   onClick={() => handleRemoveItem("creditCards", index)}
-                  className="absolute top-4 right-4 text-zinc-300 hover:text-black"
+                  className="absolute top-4 right-4 text-zinc-300 hover:text-foreground"
                 >
                   <X size={16} />
                 </button>
@@ -413,7 +413,7 @@ export default function Onboarding() {
             ))}
             <button
               onClick={() => handleAddItem("cards")}
-              className="w-full py-8 border border-dashed border-black/20 text-xs font-black uppercase tracking-widest hover:border-black transition-all"
+              className="w-full py-8 border border-dashed border-foreground/20 text-xs font-black uppercase tracking-widest hover:border-foreground transition-all"
             >
               + Register Card
             </button>
@@ -423,10 +423,10 @@ export default function Onboarding() {
         return (
           <div className="space-y-12">
             {formData.investments.map((item, index) => (
-              <div key={index} className="p-8 border border-black relative">
+              <div key={index} className="p-8 border border-foreground relative">
                 <button
                   onClick={() => handleRemoveItem("investments", index)}
-                  className="absolute top-4 right-4 text-zinc-300 hover:text-black"
+                  className="absolute top-4 right-4 text-zinc-300 hover:text-foreground"
                 >
                   <X size={16} />
                 </button>
@@ -491,7 +491,7 @@ export default function Onboarding() {
             ))}
             <button
               onClick={() => handleAddItem("investments")}
-              className="w-full py-8 border border-dashed border-black/20 text-xs font-black uppercase tracking-widest hover:border-black transition-all"
+              className="w-full py-8 border border-dashed border-foreground/20 text-xs font-black uppercase tracking-widest hover:border-foreground transition-all"
             >
               + Register Investment
             </button>
@@ -501,10 +501,10 @@ export default function Onboarding() {
         return (
           <div className="space-y-12">
             {formData.loans.map((item, index) => (
-              <div key={index} className="p-8 border border-black relative">
+              <div key={index} className="p-8 border border-foreground relative">
                 <button
                   onClick={() => handleRemoveItem("loans", index)}
-                  className="absolute top-4 right-4 text-zinc-300 hover:text-black"
+                  className="absolute top-4 right-4 text-zinc-300 hover:text-foreground"
                 >
                   <X size={16} />
                 </button>
@@ -560,7 +560,7 @@ export default function Onboarding() {
             ))}
             <button
               onClick={() => handleAddItem("liabilities")}
-              className="w-full py-8 border border-dashed border-black/20 text-xs font-black uppercase tracking-widest hover:border-black transition-all"
+              className="w-full py-8 border border-dashed border-foreground/20 text-xs font-black uppercase tracking-widest hover:border-foreground transition-all"
             >
               + Register Liability
             </button>
@@ -570,16 +570,16 @@ export default function Onboarding() {
         return (
           <div className="space-y-16">
             <div className="space-y-8">
-              <h3 className="text-xs font-black uppercase tracking-widest border-l-2 border-black pl-4">
+              <h3 className="text-xs font-black uppercase tracking-widest border-l-2 border-foreground pl-4">
                 Recurring Inflow
               </h3>
               {formData.otherIncomeSources.map((item, index) => (
-                <div key={index} className="p-8 border border-black relative">
+                <div key={index} className="p-8 border border-foreground relative">
                   <button
                     onClick={() =>
                       handleRemoveItem("otherIncomeSources", index)
                     }
-                    className="absolute top-4 right-4 text-zinc-300 hover:text-black"
+                    className="absolute top-4 right-4 text-zinc-300 hover:text-foreground"
                   >
                     <X size={16} />
                   </button>
@@ -657,21 +657,21 @@ export default function Onboarding() {
                     ],
                   }));
                 }}
-                className="w-full py-4 border border-dashed border-black/20 text-[8px] font-black uppercase tracking-widest hover:border-black transition-all"
+                className="w-full py-4 border border-dashed border-foreground/20 text-[8px] font-black uppercase tracking-widest hover:border-foreground transition-all"
               >
                 + Register Inflow
               </button>
             </div>
 
             <div className="space-y-8">
-              <h3 className="text-xs font-black uppercase tracking-widest border-l-2 border-black pl-4">
+              <h3 className="text-xs font-black uppercase tracking-widest border-l-2 border-foreground pl-4">
                 Recurring Outflow
               </h3>
               {formData.otherExpenses.map((item, index) => (
-                <div key={index} className="p-8 border border-black relative">
+                <div key={index} className="p-8 border border-foreground relative">
                   <button
                     onClick={() => handleRemoveItem("otherExpenses", index)}
-                    className="absolute top-4 right-4 text-zinc-300 hover:text-black"
+                    className="absolute top-4 right-4 text-zinc-300 hover:text-foreground"
                   >
                     <X size={16} />
                   </button>
@@ -736,7 +736,7 @@ export default function Onboarding() {
               ))}
               <button
                 onClick={() => handleAddItem("cashflow")}
-                className="w-full py-4 border border-dashed border-black/20 text-[8px] font-black uppercase tracking-widest hover:border-black transition-all"
+                className="w-full py-4 border border-dashed border-foreground/20 text-[8px] font-black uppercase tracking-widest hover:border-foreground transition-all"
               >
                 + Register Outflow
               </button>
@@ -753,10 +753,10 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="bg-white text-black font-sans flex overflow-hidden h-screen">
-      <div className="w-80 border-r border-black hidden md:flex flex-col p-12">
+    <div className="bg-white text-foreground font-sans flex overflow-hidden h-screen">
+      <div className="w-80 border-r border-foreground hidden md:flex flex-col p-12">
         <div className="mb-20">
-          <div className="w-10 h-10 bg-black text-white flex items-center justify-center font-black italic text-xl mb-4">
+          <div className="w-10 h-10 bg-foreground text-background flex items-center justify-center font-black italic text-xl mb-4">
             M
           </div>
           <h1 className="text-xs font-black tracking-[0.3em] uppercase italic">
@@ -771,8 +771,8 @@ export default function Onboarding() {
                 <div
                   className={`w-6 h-6 border flex items-center justify-center text-xs font-black transition-all ${
                     i <= currentStep
-                      ? "border-black bg-black text-white"
-                      : "border-black/10 text-zinc-300"
+                      ? "border-foreground bg-foreground text-background"
+                      : "border-foreground/10 text-zinc-300"
                   }`}
                 >
                   {i + 1}
@@ -780,7 +780,7 @@ export default function Onboarding() {
                 {i < steps.length - 1 && (
                   <div
                     className={`w-px h-12 my-2 ${
-                      i < currentStep ? "bg-black" : "bg-black/10"
+                      i < currentStep ? "bg-foreground" : "bg-foreground/10"
                     }`}
                   />
                 )}
@@ -789,7 +789,7 @@ export default function Onboarding() {
                 <h3
                   className={`text-xs font-black uppercase tracking-widest transition-colors ${
                     i === currentStep
-                      ? "text-black italic underline underline-offset-4"
+                      ? "text-foreground italic underline underline-offset-4"
                       : "text-zinc-300"
                   }`}
                 >
@@ -810,7 +810,7 @@ export default function Onboarding() {
         <button
           onClick={handleSkip}
           disabled={isLoading}
-          className="text-[12px] font-black border-2 border-black px-8 py-4 hover:bg-black hover:text-white transition-all uppercase tracking-tighter"
+          className="text-[12px] font-black border-2 border-foreground px-8 py-4 hover:bg-foreground hover:text-background transition-all uppercase tracking-tighter"
         >
           {isLoading ? "PROCEEDING..." : "Skip & Take Guided Tour"}
         </button>
@@ -819,13 +819,13 @@ export default function Onboarding() {
       <div className="flex-1 flex flex-col overflow-y-auto">
         <div className="max-w-4xl w-full mx-auto p-12 md:p-24 flex-1">
           <div className="mb-20">
-            <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-2">
+            <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-2">
               Section 0{currentStep + 1}
             </p>
             <h2 className="text-5xl font-black tracking-tighter italic uppercase">
               {steps[currentStep].title}
             </h2>
-            <p className="text-zinc-400 font-medium mt-4 max-w-md">
+            <p className="text-foreground/69 font-medium mt-4 max-w-md">
               Initialize your financial baseline for the platform logic.
             </p>
           </div>
@@ -833,7 +833,7 @@ export default function Onboarding() {
           <div className="pb-24">{renderStepContent()}</div>
         </div>
 
-        <div className="sticky bottom-0 bg-white border-t border-black p-8 flex justify-between items-center z-10">
+        <div className="sticky bottom-0 bg-white border-t border-foreground p-8 flex justify-between items-center z-10">
           <button
             onClick={() => setCurrentStep((prev) => prev - 1)}
             disabled={currentStep === 0}
@@ -847,7 +847,7 @@ export default function Onboarding() {
           <button
             onClick={handleNext}
             disabled={isLoading}
-            className="px-12 py-4 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center gap-3 disabled:opacity-50"
+            className="px-12 py-4 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all flex items-center gap-3 disabled:opacity-50"
           >
             {isLoading
               ? "Synchronizing..."

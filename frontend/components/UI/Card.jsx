@@ -13,7 +13,7 @@ export function Card({
 
   return (
     <div
-      className={`p-4 sm:p-6 md:p-8 border border-(--foreground) ${hoverClass} ${clickableClass} ${className}`}
+      className={`p-4 sm:p-6 md:p-8 border border-foreground ${hoverClass} ${clickableClass} ${className}`}
       onClick={onClick}
     >
       {(title || Icon) && (
@@ -23,7 +23,7 @@ export function Card({
               {title}
             </h3>
           )}
-          {Icon && <Icon size={20} className="text-zinc-400" />}
+          {Icon && <Icon size={20} className="text-foreground/69" />}
         </div>
       )}
       {children}
@@ -33,15 +33,15 @@ export function Card({
 
 export function StatCard({ title, amount, symbol, subtext, icon: Icon }) {
   return (
-    <div className="p-4 sm:p-6 md:p-8 border-r border-b border-(--foreground) group hover:bg-foreground transition-all duration-300">
+    <div className="p-4 sm:p-6 md:p-8 border-r border-b border-foreground group hover:bg-foreground transition-all duration-300">
       <div className="flex justify-between items-start mb-4 sm:mb-6">
-        <p className="text-xs] sm:text-xs font-black uppercase tracking-widest text-zinc-400 group-hover:text-zinc-500 transition-colors">
+        <p className="text-xs sm:text-xs font-black uppercase tracking-widest text-foreground/69 group-hover:text-zinc-500 transition-colors">
           {title}
         </p>
         {Icon && (
           <Icon
             size={14}
-            className="text-zinc-400 group-hover:text-zinc-500 sm:w-4 sm:h-4"
+            className="text-foreground/69 group-hover:text-zinc-500 sm:w-4 sm:h-4"
           />
         )}
       </div>
@@ -51,7 +51,7 @@ export function StatCard({ title, amount, symbol, subtext, icon: Icon }) {
           : amount}
       </h2>
       {subtext && (
-        <p className="text-xs] sm:text-xs font-bold text-zinc-400 mt-2 uppercase">
+        <p className="text-xs sm:text-xs font-bold text-foreground/69 mt-2 uppercase">
           {subtext}
         </p>
       )}
@@ -69,13 +69,13 @@ export function GridCard({
 }) {
   return (
     <div
-      className={`p-4 sm:p-6 md:p-8 border-r border-b border-(--foreground) group hover:bg-foreground hover:text-background transition-all duration-300 flex flex-col justify-between min-h-50 sm:min-h-70 ${className}`}
+      className={`p-4 sm:p-6 md:p-8 border-r border-b border-foreground group hover:bg-foreground hover:text-background transition-all duration-300 flex flex-col justify-between min-h-50 sm:min-h-70 ${className}`}
     >
       <div className="space-y-6">
         <div className="flex justify-between items-start">
           <div className="space-y-1">
             {subtitle && (
-              <p className="text-xs font-black uppercase tracking-widest text-zinc-400 group-hover:text-zinc-500">
+              <p className="text-xs font-black uppercase tracking-widest text-foreground/69 group-hover:text-zinc-500">
                 {subtitle}
               </p>
             )}

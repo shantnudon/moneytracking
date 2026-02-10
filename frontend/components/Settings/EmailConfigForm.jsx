@@ -142,29 +142,29 @@ export default function EmailConfigForm() {
   };
 
   const labelClass =
-    "text-xs font-black uppercase tracking-widest text-zinc-400 mb-1 block";
+    "text-xs font-black uppercase tracking-widest text-foreground/69 mb-1 block";
 
   return (
     <div className="max-w-4xl space-y-16 animate-in fade-in duration-500 pb-20">
-      <div className="border border-black p-6 flex gap-4 bg-zinc-50 rounded-none">
-        <AlertTriangle className="text-black shrink-0" size={20} />
+      <div className="border border-foreground p-6 flex gap-4 bg-foreground rounded-none">
+        <AlertTriangle className="text-foreground shrink-0" size={20} />
         <div className="space-y-1">
           <p className="text-xs font-black uppercase tracking-widest italic">
             Auth Protocol Notice
           </p>
           <p className="text-xs font-bold text-zinc-500 uppercase leading-relaxed">
             Gmail Integration requires{" "}
-            <span className="text-black underline">App Passwords</span>.
+            <span className="text-foreground underline">App Passwords</span>.
             Standard account credentials will be rejected by the IMAP layer.
           </p>
         </div>
       </div>
 
       <section className="space-y-8">
-        <div className="flex justify-between items-end border-b border-black pb-4">
+        <div className="flex justify-between items-end border-b border-foreground pb-4">
           <div className="flex items-center gap-3">
-            <Server size={20} className="text-black" />
-            <h3 className="font-black uppercase tracking-widest text-sm text-black">
+            <Server size={20} className="text-foreground" />
+            <h3 className="font-black uppercase tracking-widest text-sm text-foreground">
               Protocol Config
             </h3>
           </div>
@@ -173,14 +173,14 @@ export default function EmailConfigForm() {
               <button
                 onClick={handleTest}
                 disabled={testing}
-                className="text-xs font-black uppercase border-b border-black/20 hover:border-black transition-all"
+                className="text-xs font-black uppercase border-b border-foreground/20 hover:border-foreground transition-all"
               >
                 {testing ? "Testing..." : "Test Link"}
               </button>
             )}
             <button
               onClick={() => setIsEditMode(!isEditMode)}
-              className="text-xs font-black uppercase border-b border-black/20 hover:border-black transition-all"
+              className="text-xs font-black uppercase border-b border-foreground/20 hover:border-foreground transition-all"
             >
               {isEditMode ? "Abort" : "Modify"}
             </button>
@@ -243,7 +243,7 @@ export default function EmailConfigForm() {
                     name="scanFrequency"
                     value={formData.scanFrequency}
                     onChange={handleChange}
-                    className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none bg-transparent appearance-none uppercase rounded-none"
+                    className="w-full border-b border-foreground/20 py-2 text-sm font-black focus:border-foreground outline-none bg-transparent appearance-none uppercase rounded-none"
                   >
                     <option value="6">06 HOURS</option>
                     <option value="12">12 HOURS</option>
@@ -256,7 +256,7 @@ export default function EmailConfigForm() {
                     name="processingType"
                     value={formData.processingType}
                     onChange={handleChange}
-                    className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none bg-transparent appearance-none uppercase rounded-none"
+                    className="w-full border-b border-foreground/20 py-2 text-sm font-black focus:border-foreground outline-none bg-transparent appearance-none uppercase rounded-none"
                   >
                     <option value="REGEX">PATTERN (REGEX)</option>
                     <option value="AI">INTELLIGENT (AI)</option>
@@ -266,7 +266,7 @@ export default function EmailConfigForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-8 py-4 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all rounded-none"
+                className="px-8 py-4 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all rounded-none"
               >
                 {loading ? "Committing..." : "Save Configuration"}
               </button>
@@ -276,9 +276,9 @@ export default function EmailConfigForm() {
       </section>
 
       <section className="space-y-8">
-        <div className="flex items-center gap-3 border-b border-black pb-4">
-          <ShieldCheck size={20} className="text-black" />
-          <h3 className="font-black uppercase tracking-widest text-sm text-black">
+        <div className="flex items-center gap-3 border-b border-foreground pb-4">
+          <ShieldCheck size={20} className="text-foreground" />
+          <h3 className="font-black uppercase tracking-widest text-sm text-foreground">
             Senders Whitelist
           </h3>
         </div>
@@ -295,17 +295,17 @@ export default function EmailConfigForm() {
                   email: e.target.value.toUpperCase(),
                 })
               }
-              className="flex-1 border-b border-black/20 py-4 text-xs font-black uppercase focus:border-black outline-none transition-all placeholder-zinc-200 rounded-none bg-transparent"
+              className="flex-1 border-b border-foreground/20 py-4 text-xs font-black uppercase focus:border-foreground outline-none transition-all placeholder-zinc-200 rounded-none bg-transparent"
             />
             <button
               onClick={addSender}
-              className="px-6 py-4 border border-black text-xs font-black uppercase hover:bg-black hover:text-white transition-all rounded-none"
+              className="px-6 py-4 border border-foreground text-xs font-black uppercase hover:bg-foreground hover:text-background transition-all rounded-none"
             >
               <Plus size={16} />
             </button>
           </div>
 
-          <div className="divide-y divide-black/5 border-t border-black/5">
+          <div className="divide-y divide-black/5 border-t border-foreground/5">
             {formData.monitoredSenders.length === 0 ? (
               <p className="py-12 text-center text-xs font-black uppercase tracking-widest text-zinc-300 italic">
                 Whitelist Empty
@@ -315,14 +315,14 @@ export default function EmailConfigForm() {
                 <div key={sender.email} className="group transition-all">
                   <div className="flex items-center justify-between py-6">
                     <div className="flex items-center gap-6">
-                      <div className="w-10 h-10 border border-black flex items-center justify-center text-xs font-black group-hover:bg-black group-hover:text-white transition-all">
+                      <div className="w-10 h-10 border border-foreground flex items-center justify-center text-xs font-black group-hover:bg-foreground group-hover:text-background transition-all">
                         {sender.email[0].toUpperCase()}
                       </div>
                       <div>
-                        <p className="text-sm font-black uppercase tracking-tighter italic text-black">
+                        <p className="text-sm font-black uppercase tracking-tighter italic text-foreground">
                           {sender.email}
                         </p>
-                        <p className="text-xs] font-bold text-zinc-400 uppercase tracking-widest mt-1">
+                        <p className="text-xs font-bold text-foreground/69 uppercase tracking-widest mt-1">
                           {sender.pdfPasswords?.length || 0} Registered Keys
                         </p>
                       </div>
@@ -336,7 +336,7 @@ export default function EmailConfigForm() {
                               : sender.email,
                           )
                         }
-                        className="p-2 hover:bg-zinc-100 transition-colors"
+                        className="p-2 hover:bg-muted100 transition-colors"
                       >
                         {expandedSender === sender.email ? (
                           <ChevronUp size={16} />
@@ -346,7 +346,7 @@ export default function EmailConfigForm() {
                       </button>
                       <button
                         onClick={() => removeSender(sender.email)}
-                        className="p-2 text-zinc-300 hover:text-black transition-colors"
+                        className="p-2 text-zinc-300 hover:text-foreground transition-colors"
                       >
                         <Trash2 size={16} />
                       </button>
@@ -356,14 +356,14 @@ export default function EmailConfigForm() {
                   {expandedSender === sender.email && (
                     <div className="pb-8 pl-16 space-y-6 animate-in slide-in-from-top-2">
                       <div className="space-y-4">
-                        <label className="text-xs font-black uppercase tracking-widest text-black">
+                        <label className="text-xs font-black uppercase tracking-widest text-foreground">
                           Decryption Keys
                         </label>
                         <div className="flex flex-wrap gap-3">
                           {sender.pdfPasswords?.map((pwd) => (
                             <span
                               key={pwd}
-                              className="inline-flex items-center gap-2 px-3 py-1.5 border border-black text-xs font-black uppercase text-black"
+                              className="inline-flex items-center gap-2 px-3 py-1.5 border border-foreground text-xs font-black uppercase text-foreground"
                             >
                               <Key size={12} /> {pwd}
                               <button
@@ -379,7 +379,7 @@ export default function EmailConfigForm() {
                           <input
                             type="text"
                             placeholder="ADD NEW KEY"
-                            className="text-xs font-black uppercase border-b border-black/10 outline-none w-32 focus:border-black bg-transparent py-1"
+                            className="text-xs font-black uppercase border-b border-foreground/10 outline-none w-32 focus:border-foreground bg-transparent py-1"
                             onKeyPress={(e) => {
                               if (e.key === "Enter") {
                                 addPdfPasswordToSender(
@@ -402,7 +402,7 @@ export default function EmailConfigForm() {
       </section>
 
       {message.text && (
-        <div className="fixed bottom-12 right-12 bg-black text-white px-8 py-4 border border-white flex items-center gap-4 animate-in slide-in-from-bottom-4 shadow-none z-100">
+        <div className="fixed bottom-12 right-12 bg-foreground text-background px-8 py-4 border border-white flex items-center gap-4 animate-in slide-in-from-bottom-4 shadow-none z-100">
           <span className="text-xs font-black uppercase tracking-widest">
             {message.text}
           </span>
@@ -421,10 +421,10 @@ export default function EmailConfigForm() {
 function SummaryItem({ label, value }) {
   return (
     <div className="space-y-1">
-      <p className="text-xs font-black uppercase tracking-widest text-zinc-400">
+      <p className="text-xs font-black uppercase tracking-widest text-foreground/69">
         {label}
       </p>
-      <p className="text-sm font-black uppercase tracking-tighter truncate text-black">
+      <p className="text-sm font-black uppercase tracking-tighter truncate text-foreground">
         {value || "NONE"}
       </p>
     </div>
@@ -434,12 +434,12 @@ function SummaryItem({ label, value }) {
 function BlueprintInput({ label, ...props }) {
   return (
     <div className="space-y-1">
-      <label className="text-xs font-black uppercase tracking-widest text-zinc-400">
+      <label className="text-xs font-black uppercase tracking-widest text-foreground/69">
         {label}
       </label>
       <input
         {...props}
-        className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all bg-transparent uppercase placeholder-zinc-200 rounded-none text-black"
+        className="w-full border-b border-foreground/20 py-2 text-sm font-black focus:border-foreground outline-none transition-all bg-transparent uppercase placeholder-zinc-200 rounded-none text-foreground"
       />
     </div>
   );

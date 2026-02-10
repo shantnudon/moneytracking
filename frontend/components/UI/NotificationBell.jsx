@@ -106,7 +106,7 @@ export default function NotificationBell() {
       >
         <Bell size={20} className="text-foreground" />
         {(unreadCount > 0 || unsettledCount > 0) && (
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-foreground text-background text-xs] font-black flex items-center justify-center border border-background">
+          <span className="absolute -top-1 -right-1 w-4 h-4 bg-foreground text-background text-xs font-black flex items-center justify-center border border-background">
             {unreadCount + unsettledCount}
           </span>
         )}
@@ -121,7 +121,7 @@ export default function NotificationBell() {
             {unreadCount > 0 && (
               <button
                 onClick={handleMarkAllRead}
-                className="text-xs] font-black uppercase tracking-tighter border-b border-foreground hover:italic"
+                className="text-xs font-black uppercase tracking-tighter border-b border-foreground hover:italic"
               >
                 Mark all as read
               </button>
@@ -153,7 +153,7 @@ export default function NotificationBell() {
 
             {notifications.length === 0 && unsettledCount === 0 ? (
               <div className="p-8 text-center">
-                <p className="text-xs font-black uppercase tracking-widest text-zinc-400 italic">
+                <p className="text-xs font-black uppercase tracking-widest text-foreground/69 italic">
                   All clear
                 </p>
               </div>
@@ -175,7 +175,7 @@ export default function NotificationBell() {
                         {!n.isRead && (
                           <button
                             onClick={() => handleMarkRead(n.id)}
-                            className="p-1 hover:bg-zinc-100 rounded"
+                            className="p-1 hover:bg-muted100 rounded"
                           >
                             <Check size={12} />
                           </button>
@@ -184,7 +184,7 @@ export default function NotificationBell() {
                       <p className="text-xs font-medium mt-1 tracking-tighter leading-tight">
                         {n.message}
                       </p>
-                      <p className="text-xs] font-bold text-zinc-400 mt-2 uppercase">
+                      <p className="text-xs font-bold text-foreground/69 mt-2 uppercase">
                         {new Date(n.createdAt).toLocaleString()}
                       </p>
                     </div>

@@ -208,23 +208,23 @@ const AddInvestmentModal = ({
                 required
               />
               {showSearchResults && searchResults.length > 0 && (
-                <div className="absolute z-50 left-0 right-0 top-full mt-1 bg-white border border-black shadow-xl max-h-48 overflow-y-auto">
+                <div className="absolute z-50 left-0 right-0 top-full mt-1 bg-white border border-foreground shadow-xl max-h-48 overflow-y-auto">
                   {searchResults.map((result) => (
                     <button
                       key={result.symbol}
                       type="button"
                       onClick={() => selectSearchResult(result)}
-                      className="w-full text-left px-4 py-3 hover:bg-zinc-50 border-b border-black/5 last:border-0 flex justify-between items-center"
+                      className="w-full text-left px-4 py-3 hover:bg-muted50 border-b border-foreground/5 last:border-0 flex justify-between items-center"
                     >
                       <div>
                         <p className="text-xs font-black italic">
                           {result.symbol}
                         </p>
-                        <p className="text-xs font-bold text-zinc-400 uppercase truncate max-w-37.5">
+                        <p className="text-xs font-bold text-foreground/69 uppercase truncate max-w-37.5">
                           {result.name}
                         </p>
                       </div>
-                      <span className="text-xs] font-black uppercase tracking-widest bg-zinc-100 px-1.5 py-0.5">
+                      <span className="text-xs font-black uppercase tracking-widest bg-foreground px-1.5 py-0.5">
                         {result.exchange}
                       </span>
                     </button>

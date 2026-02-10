@@ -18,7 +18,7 @@ const GeneralView = ({
       <Card className="p-8">
         <div className="flex justify-between items-end">
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-1">
+            <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-1">
               Current Liquidity
             </p>
             <h2 className="text-5xl font-black tracking-tighter italic text-blue-600">

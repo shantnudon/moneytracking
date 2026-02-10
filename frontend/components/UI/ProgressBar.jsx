@@ -17,13 +17,13 @@ export default function ProgressBar({
           {label && <span>{label}</span>}
           {showValues && (
             <div className="flex gap-2">
-              <span className="text-zinc-400">{displayCurrent} /</span>
+              <span className="text-foreground/69">{displayCurrent} /</span>
               <span>{displayTotal}</span>
             </div>
           )}
         </div>
       )}
-      <div className="h-0.5 w-full bg-zinc-100 dark:bg-zinc-800">
+      <div className="h-0.5 w-full bg-foreground dark:bg-foreground">
         <div
           className="h-full bg-foreground transition-all duration-1000"
           style={{ width: `${percentage}%` }}
@@ -37,7 +37,7 @@ export function SimpleProgressBar({ percentage, className = "" }) {
   const safePercentage = Math.min(Math.max(percentage || 0, 0), 100);
 
   return (
-    <div className={`h-0.5 w-full bg-zinc-100 dark:bg-zinc-800 ${className}`}>
+    <div className={`h-0.5 w-full bg-foreground dark:bg-foreground ${className}`}>
       <div
         className="h-full bg-foreground transition-all duration-1000"
         style={{ width: `${safePercentage}%` }}

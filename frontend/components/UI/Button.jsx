@@ -14,14 +14,14 @@ export default function Button({
   const variantClasses = {
     primary: "bg-foreground text-background hover:opacity-90",
     secondary:
-      "border border-(--foreground) text-foreground hover:bg-foreground hover:text-background",
+      "border border-foreground text-foreground hover:bg-foreground hover:text-background",
     outline: "border border-foreground/10 hover:border-foreground",
     ghost: "hover:bg-muted/10",
-    danger: "bg-red-600 text-white hover:bg-red-700",
+    danger: "bg-red-600 text-background hover:bg-red-700",
   };
 
   const sizeClasses = {
-    sm: "px-3 sm:px-4 py-1.5 sm:py-2 text-xs] sm:text-xs",
+    sm: "px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-xs",
     md: "px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-xs",
     lg: "px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm",
   };

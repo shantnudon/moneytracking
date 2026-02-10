@@ -100,7 +100,7 @@ const RecalculateBalanceModal = ({
               <CheckCircle className="w-12 h-12 text-green-600" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-background">
                 Everything looks good!
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mt-1">
@@ -118,7 +118,7 @@ const RecalculateBalanceModal = ({
             </div>
             <button
               onClick={onClose}
-              className="w-full py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="w-full py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-background font-semibold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
               Close
             </button>
@@ -157,7 +157,7 @@ const RecalculateBalanceModal = ({
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
                 <p className="text-gray-500">Starting Balance</p>
-                <p className="font-bold text-gray-900 dark:text-white">
+                <p className="font-bold text-gray-900 dark:text-background">
                   {formatCurrency(data.startingBalance)}
                 </p>
               </div>
@@ -178,7 +178,7 @@ const RecalculateBalanceModal = ({
               </div>
               <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-800">
                 <p className="text-gray-500">Actual Ledger Balance</p>
-                <p className="font-bold text-gray-900 dark:text-white">
+                <p className="font-bold text-gray-900 dark:text-background">
                   {formatCurrency(data.currentBalance)}
                 </p>
               </div>
@@ -191,7 +191,7 @@ const RecalculateBalanceModal = ({
               <button
                 onClick={() => handleResolve(true)}
                 disabled={isLoading}
-                className="w-full flex items-center justify-between p-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all group"
+                className="w-full flex items-center justify-between p-4 bg-blue-600 text-background rounded-xl hover:bg-blue-700 transition-all group"
               >
                 <div className="text-left">
                   <p className="font-bold">Yes, fix with transaction</p>
@@ -204,7 +204,7 @@ const RecalculateBalanceModal = ({
               <button
                 onClick={() => handleResolve(false)}
                 disabled={isLoading}
-                className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 transition-all group"
+                className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-background rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 transition-all group"
               >
                 <div className="text-left">
                   <p className="font-bold">Yes, just update balance</p>
@@ -231,7 +231,7 @@ const RecalculateBalanceModal = ({
               <CheckCircle className="w-12 h-12 text-green-600" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-background">
                 Resolved!
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mt-1">
@@ -240,7 +240,7 @@ const RecalculateBalanceModal = ({
             </div>
             <button
               onClick={onClose}
-              className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+              className="w-full py-2 bg-blue-600 text-background font-semibold rounded-lg hover:bg-blue-700 transition-colors"
             >
               Done
             </button>
@@ -253,7 +253,7 @@ const RecalculateBalanceModal = ({
               <X className="w-12 h-12 text-red-600" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-background">
                 Error
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mt-1">
@@ -262,7 +262,7 @@ const RecalculateBalanceModal = ({
             </div>
             <button
               onClick={onClose}
-              className="w-full py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="w-full py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-background font-semibold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
               Close
             </button>

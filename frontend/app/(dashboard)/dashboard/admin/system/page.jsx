@@ -105,13 +105,13 @@ export default function AdminSystemPage() {
   };
 
   return (
-    <div className="bg-white p-6 md:p-8 text-black font-sans animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-4 border-b border-black/10">
+    <div className="bg-white p-6 md:p-8 text-foreground font-sans animate-in fade-in duration-500">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-4 border-b border-foreground/10">
         <div>
           <h1 className="text-4xl font-black tracking-tighter uppercase italic">
             System Admin
           </h1>
-          <p className="text-zinc-400 font-medium mt-2">
+          <p className="text-foreground/69 font-medium mt-2">
             Manage global currencies and investment types
           </p>
         </div>
@@ -119,7 +119,7 @@ export default function AdminSystemPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
         <section className="space-y-8">
-          <div className="flex items-center justify-between border-b border-black pb-2">
+          <div className="flex items-center justify-between border-b border-foreground pb-2">
             <div className="flex items-center gap-3">
               <Globe size={18} />
               <h3 className="font-black uppercase tracking-widest text-sm">
@@ -128,7 +128,7 @@ export default function AdminSystemPage() {
             </div>
             <button
               onClick={() => setShowCurrencyModal(true)}
-              className="text-xs font-black border border-black px-3 py-1 hover:bg-black hover:text-white transition-all"
+              className="text-xs font-black border border-foreground px-3 py-1 hover:bg-foreground hover:text-background transition-all"
             >
               ADD NEW
             </button>
@@ -142,13 +142,13 @@ export default function AdminSystemPage() {
               >
                 <div>
                   <span className="text-sm font-black uppercase">{c.code}</span>
-                  <span className="ml-4 text-xs font-bold text-zinc-400 uppercase">
+                  <span className="ml-4 text-xs font-bold text-foreground/69 uppercase">
                     {c.label}
                   </span>
                 </div>
                 <button
                   onClick={() => handleDeleteCurrency(c.id)}
-                  className="opacity-0 group-hover:opacity-100 p-2 text-zinc-300 hover:text-black transition-all"
+                  className="opacity-0 group-hover:opacity-100 p-2 text-zinc-300 hover:text-foreground transition-all"
                 >
                   <Trash2 size={14} />
                 </button>
@@ -158,7 +158,7 @@ export default function AdminSystemPage() {
         </section>
 
         <section className="space-y-8">
-          <div className="flex items-center justify-between border-b border-black pb-2">
+          <div className="flex items-center justify-between border-b border-foreground pb-2">
             <div className="flex items-center gap-3">
               <Briefcase size={18} />
               <h3 className="font-black uppercase tracking-widest text-sm">
@@ -167,7 +167,7 @@ export default function AdminSystemPage() {
             </div>
             <button
               onClick={() => setShowInvTypeModal(true)}
-              className="text-xs font-black border border-black px-3 py-1 hover:bg-black hover:text-white transition-all"
+              className="text-xs font-black border border-foreground px-3 py-1 hover:bg-foreground hover:text-background transition-all"
             >
               ADD NEW
             </button>
@@ -182,7 +182,7 @@ export default function AdminSystemPage() {
                 <span className="text-sm font-black uppercase">{t.name}</span>
                 <button
                   onClick={() => handleDeleteInvType(t.id)}
-                  className="opacity-0 group-hover:opacity-100 p-2 text-zinc-300 hover:text-black transition-all"
+                  className="opacity-0 group-hover:opacity-100 p-2 text-zinc-300 hover:text-foreground transition-all"
                 >
                   <Trash2 size={14} />
                 </button>
@@ -194,7 +194,7 @@ export default function AdminSystemPage() {
 
       {showCurrencyModal && (
         <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white border border-black p-8 w-full max-w-md animate-in zoom-in-95 duration-200">
+          <div className="bg-white border border-foreground p-8 w-full max-w-md animate-in zoom-in-95 duration-200">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-xl font-black uppercase tracking-tighter italic">
                 Add Currency
@@ -205,7 +205,7 @@ export default function AdminSystemPage() {
             </div>
             <form onSubmit={handleCreateCurrency} className="space-y-6">
               <div className="space-y-1">
-                <label className="text-xs font-black uppercase text-zinc-400">
+                <label className="text-xs font-black uppercase text-foreground/69">
                   Currency Code
                 </label>
                 <input
@@ -217,13 +217,13 @@ export default function AdminSystemPage() {
                       code: e.target.value.toUpperCase(),
                     })
                   }
-                  className="w-full border-b border-black/20 py-2 text-sm font-bold focus:border-black outline-none transition-all"
+                  className="w-full border-b border-foreground/20 py-2 text-sm font-bold focus:border-foreground outline-none transition-all"
                   placeholder="USD, INR, EUR"
                   required
                 />
               </div>
               <div className="space-y-1">
-                <label className="text-xs font-black uppercase text-zinc-400">
+                <label className="text-xs font-black uppercase text-foreground/69">
                   Label
                 </label>
                 <input
@@ -232,14 +232,14 @@ export default function AdminSystemPage() {
                   onChange={(e) =>
                     setCurrencyForm({ ...currencyForm, label: e.target.value })
                   }
-                  className="w-full border-b border-black/20 py-2 text-sm font-bold focus:border-black outline-none transition-all"
+                  className="w-full border-b border-foreground/20 py-2 text-sm font-bold focus:border-foreground outline-none transition-all"
                   placeholder="US DOLLAR"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-full py-4 bg-black text-white text-xs font-black uppercase hover:bg-zinc-800 transition-all"
+                className="w-full py-4 bg-foreground text-background text-xs font-black uppercase hover:bg-muted800 transition-all"
               >
                 Register Currency
               </button>
@@ -250,7 +250,7 @@ export default function AdminSystemPage() {
 
       {showInvTypeModal && (
         <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white border border-black p-8 w-full max-w-md animate-in zoom-in-95 duration-200">
+          <div className="bg-white border border-foreground p-8 w-full max-w-md animate-in zoom-in-95 duration-200">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-xl font-black uppercase tracking-tighter italic">
                 Add Investment Type
@@ -261,7 +261,7 @@ export default function AdminSystemPage() {
             </div>
             <form onSubmit={handleCreateInvType} className="space-y-6">
               <div className="space-y-1">
-                <label className="text-xs font-black uppercase text-zinc-400">
+                <label className="text-xs font-black uppercase text-foreground/69">
                   Type Name
                 </label>
                 <input
@@ -270,14 +270,14 @@ export default function AdminSystemPage() {
                   onChange={(e) =>
                     setInvTypeForm({ ...invTypeForm, name: e.target.value })
                   }
-                  className="w-full border-b border-black/20 py-2 text-sm font-bold focus:border-black outline-none transition-all"
+                  className="w-full border-b border-foreground/20 py-2 text-sm font-bold focus:border-foreground outline-none transition-all"
                   placeholder="STOCKS, CRYPTO, REAL ESTATE"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-full py-4 bg-black text-white text-xs font-black uppercase hover:bg-zinc-800 transition-all"
+                className="w-full py-4 bg-foreground text-background text-xs font-black uppercase hover:bg-muted800 transition-all"
               >
                 Register Type
               </button>

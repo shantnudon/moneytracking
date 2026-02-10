@@ -77,7 +77,7 @@ const InvestmentManager = ({ accountId, investments, summary, onRefresh }) => {
           <h3 className="text-xl font-black uppercase tracking-tighter italic">
             Portfolio
           </h3>
-          <p className="text-xs font-black uppercase tracking-widest text-zinc-400">
+          <p className="text-xs font-black uppercase tracking-widest text-foreground/69">
             Asset Management
           </p>
         </div>
@@ -110,25 +110,25 @@ const InvestmentManager = ({ accountId, investments, summary, onRefresh }) => {
         initialData={editingInvestment}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-black">
-        <div className="p-8 border-b border-r border-black">
-          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-foreground">
+        <div className="p-8 border-b border-r border-foreground">
+          <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-2">
             Principal
           </p>
           <p className="text-2xl font-black tracking-tighter italic">
             {formatCurrency(summary?.totalInvested || 0)}
           </p>
         </div>
-        <div className="p-8 border-b border-r border-black">
-          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-2">
+        <div className="p-8 border-b border-r border-foreground">
+          <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-2">
             Market Value
           </p>
           <p className="text-2xl font-black tracking-tighter italic">
             {formatCurrency(summary?.currentValue || 0)}
           </p>
         </div>
-        <div className="p-8 border-b border-r border-black">
-          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-2">
+        <div className="p-8 border-b border-r border-foreground">
+          <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-2">
             Performance
           </p>
           <div className="flex items-baseline gap-2">
@@ -173,7 +173,7 @@ const InvestmentManager = ({ accountId, investments, summary, onRefresh }) => {
                   <div className="font-black uppercase tracking-tighter italic">
                     {inv.symbol}
                   </div>
-                  <div className="text-xs font-black uppercase tracking-widest text-zinc-400">
+                  <div className="text-xs font-black uppercase tracking-widest text-foreground/69">
                     {inv.name}
                   </div>
                 </TableCell>

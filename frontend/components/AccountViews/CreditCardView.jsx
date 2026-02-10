@@ -59,7 +59,7 @@ const CreditCardView = ({
       <Card className="p-8">
         <div className="flex justify-between items-end">
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-1">
+            <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-1">
               Total Outstanding
             </p>
             <h2 className="text-5xl font-black tracking-tighter italic text-red-600">
@@ -71,9 +71,9 @@ const CreditCardView = ({
           </div>
         </div>
         {account.creditLimit && (
-          <div className="mt-6 pt-6 border-t border-black/5">
+          <div className="mt-6 pt-6 border-t border-foreground/5">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-xs font-black uppercase tracking-widest text-zinc-400">
+              <span className="text-xs font-black uppercase tracking-widest text-foreground/69">
                 Credit Utilization
               </span>
               <span className="text-xs font-bold">
@@ -92,11 +92,11 @@ const CreditCardView = ({
               />
             </div>
             <div className="flex justify-between mt-2 text-xs font-black uppercase tracking-widest">
-              <span className="text-zinc-400">
+              <span className="text-foreground/69">
                 Available:
                 {formatCurrency(account.creditLimit - account.balance)}
               </span>
-              <span className="text-zinc-400">
+              <span className="text-foreground/69">
                 Limit: {formatCurrency(account.creditLimit)}
               </span>
             </div>
@@ -109,14 +109,14 @@ const CreditCardView = ({
           <Card title="Current Statement" icon={Wallet}>
             <div className="space-y-4">
               <div>
-                <p className="text-xs font-black uppercase tracking-widest text-zinc-400">
+                <p className="text-xs font-black uppercase tracking-widest text-foreground/69">
                   Unbilled Amount
                 </p>
                 <h3 className="text-2xl font-black italic">
                   {formatCurrency(billInfo.currentPeriodAmount)}
                 </h3>
               </div>
-              <p className="text-xs font-bold text-zinc-400 uppercase">
+              <p className="text-xs font-bold text-foreground/69 uppercase">
                 Since {billInfo.cycleStartDate.toLocaleDateString()}
               </p>
             </div>
@@ -125,7 +125,7 @@ const CreditCardView = ({
             <div className="space-y-4">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-xs font-black uppercase tracking-widest text-zinc-400">
+                  <p className="text-xs font-black uppercase tracking-widest text-foreground/69">
                     Statement Amount
                   </p>
                   <h3 className="text-2xl font-black italic">
@@ -133,7 +133,7 @@ const CreditCardView = ({
                   </h3>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs font-black uppercase tracking-widest text-zinc-400">
+                  <p className="text-xs font-black uppercase tracking-widest text-foreground/69">
                     Due Date
                   </p>
                   <p className="text-xs font-bold text-red-600">
@@ -141,7 +141,7 @@ const CreditCardView = ({
                   </p>
                 </div>
               </div>
-              <p className="text-xs font-bold text-zinc-400 uppercase">
+              <p className="text-xs font-bold text-foreground/69 uppercase">
                 Generated on {billInfo.statementDate.toLocaleDateString()}
               </p>
             </div>
@@ -153,14 +153,14 @@ const CreditCardView = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-black/10">
-                <th className="py-4 text-xs font-black uppercase tracking-widest text-zinc-400">
+              <tr className="border-b border-foreground/10">
+                <th className="py-4 text-xs font-black uppercase tracking-widest text-foreground/69">
                   Statement Date
                 </th>
-                <th className="py-4 text-xs font-black uppercase tracking-widest text-zinc-400">
+                <th className="py-4 text-xs font-black uppercase tracking-widest text-foreground/69">
                   Transactions
                 </th>
-                <th className="py-4 text-xs font-black uppercase tracking-widest text-zinc-400 text-right">
+                <th className="py-4 text-xs font-black uppercase tracking-widest text-foreground/69 text-right">
                   Amount
                 </th>
               </tr>
@@ -169,7 +169,7 @@ const CreditCardView = ({
               {getPastBills().map((bill) => (
                 <tr
                   key={bill.id}
-                  className="group hover:bg-zinc-50 transition-all"
+                  className="group hover:bg-muted50 transition-all"
                 >
                   <td className="py-4 text-xs font-bold uppercase tracking-tighter italic">
                     {bill.date.toLocaleDateString("en-IN", {
@@ -190,7 +190,7 @@ const CreditCardView = ({
                 <tr>
                   <td
                     colSpan="3"
-                    className="py-8 text-center text-xs font-bold text-zinc-400 uppercase italic"
+                    className="py-8 text-center text-xs font-bold text-foreground/69 uppercase italic"
                   >
                     No past bills identified in recent history
                   </td>

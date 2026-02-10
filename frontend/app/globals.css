@@ -85,3 +85,9 @@ html {
     background-color: inherit;
   }
 }
+
+.no-scrollbar {
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

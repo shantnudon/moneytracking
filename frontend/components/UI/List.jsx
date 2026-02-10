@@ -28,7 +28,7 @@ export function ListItem({
     >
       <div className="flex items-center gap-6">
         {icon && (
-          <div className="w-10 h-10 border border-(--foreground) flex items-center justify-center text-xs font-black group-hover:bg-foreground group-hover:text-background transition-all">
+          <div className="w-10 h-10 border border-foreground flex items-center justify-center text-xs font-black group-hover:bg-foreground group-hover:text-background transition-all">
             {icon}
           </div>
         )}
@@ -37,7 +37,7 @@ export function ListItem({
             {title}
           </h4>
           {subtitle && (
-            <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
+            <p className="text-xs font-bold text-foreground/69 uppercase tracking-widest">
               {subtitle}
             </p>
           )}
@@ -86,7 +86,7 @@ export function SectionHeader({ title, count, action, className = "" }) {
       <h3 className="font-black uppercase tracking-widest text-sm">{title}</h3>
       <div className="flex items-center gap-4">
         {count !== undefined && (
-          <span className="text-xs font-bold text-zinc-400">
+          <span className="text-xs font-bold text-foreground/69">
             {count} {count === 1 ? "item" : "items"}
           </span>
         )}

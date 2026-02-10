@@ -222,13 +222,13 @@ export default function SubscriptionsPage() {
       <div className="mb-12 flex items-center gap-4 group">
         <button
           onClick={loadData}
-          className="p-3 border border-black hover:bg-black hover:text-white transition-all active:scale-95"
+          className="p-3 border border-foreground hover:bg-foreground hover:text-background transition-all active:scale-95"
           title="Refresh Data"
         >
           <RefreshCw size={20} className={loading ? "animate-spin" : ""} />
         </button>
         <div>
-          <p className="text-xs font-black uppercase tracking-widest text-zinc-400">
+          <p className="text-xs font-black uppercase tracking-widest text-foreground/69">
             Monthly Net Commitment
           </p>
           <h2
@@ -246,7 +246,7 @@ export default function SubscriptionsPage() {
       </div>
 
       {subscriptions.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-black">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-foreground">
           {subscriptions.map((sub) => (
             <GridCard
               key={sub.id}
@@ -274,16 +274,16 @@ export default function SubscriptionsPage() {
                 </div>
               </div>
 
-              <div className="pt-8 flex justify-between items-end border-t border-black/5 group-hover:border-white/10">
+              <div className="pt-8 flex justify-between items-end border-t border-foreground/5 group-hover:border-white/10">
                 <div>
-                  <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-1">
+                  <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-1">
                     Next Bill
                   </p>
                   <p className="text-xs font-bold uppercase tracking-tighter italic">
                     {new Date(sub.nextPaymentDate).toLocaleDateString()}
                   </p>
                 </div>
-                <div className="w-8 h-0.5 bg-black group-hover:bg-white" />
+                <div className="w-8 h-0.5 bg-foreground group-hover:bg-white" />
               </div>
 
               {(sub.accountId || sub.categoryId) && (

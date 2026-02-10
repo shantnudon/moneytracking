@@ -184,7 +184,7 @@ export default function DashboardPage() {
           <h1 className="text-4xl font-black tracking-tighter uppercase italic">
             Dashboard
           </h1>
-          <p className="text-zinc-400 font-medium mt-2">
+          <p className="text-foreground/69 font-medium mt-2">
             Welcome back, {userName}.
           </p>
         </div>
@@ -192,14 +192,14 @@ export default function DashboardPage() {
           <button
             id="tour-new-entry"
             onClick={() => router.push("/dashboard/transactions?action=new")}
-            className="flex items-center gap-2 px-5 py-2 border border-(--foreground) rounded-full text-xs font-black uppercase hover:bg-foreground hover:text-background transition-all"
+            className="flex items-center gap-2 px-5 py-2 border border-foreground rounded-full text-xs font-black uppercase hover:bg-foreground hover:text-background transition-all"
           >
             <Plus size={14} /> New Transaction
           </button>
           <button
             id="tour-new-entry"
             onClick={() => router.push("/dashboard/transactions?action=new")}
-            className="flex items-center gap-2 px-5 py-2 border border-(--foreground) rounded-full text-xs font-black uppercase hover:bg-foreground hover:text-background transition-all"
+            className="flex items-center gap-2 px-5 py-2 border border-foreground rounded-full text-xs font-black uppercase hover:bg-foreground hover:text-background transition-all"
           >
             <Plus size={14} /> New Account
           </button>
@@ -208,7 +208,7 @@ export default function DashboardPage() {
 
       <div
         id="tour-stats"
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-(--foreground)"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-foreground"
       >
         <StatCard
           title="Balance"
@@ -273,13 +273,13 @@ export default function DashboardPage() {
                 {transactions.slice(0, 5).map((t, i) => (
                   <div
                     key={i}
-                    className="flex justify-between border-b border-foreground/5 pb-2"
+                    className="flex justify-between border-b border-foreground/50 pb-2"
                   >
                     <div className="flex flex-col">
                       <span className="text-xs font-black uppercase">
                         {t.description}
                       </span>
-                      <span className="text-xs text-zinc-400 font-bold">
+                      <span className="text-xs text-foreground/69 font-bold">
                         {new Date(t.date).toLocaleDateString()}
                       </span>
                     </div>
@@ -336,7 +336,7 @@ export default function DashboardPage() {
             </List>
             <button
               onClick={() => router.push("/dashboard/accounts")}
-              className="w-full text-center text-xs font-black border border-(--foreground)/10 py-3 hover:border-(--foreground) transition-all uppercase tracking-tighter"
+              className="w-full text-center text-xs font-black border border-foreground/10 py-3 hover:border-foreground transition-all uppercase tracking-tighter"
             >
               Manage All Accounts
             </button>

@@ -281,36 +281,36 @@ export default function AccountsPage() {
       <Tour steps={accountsSteps} tourKey="accounts" />
       <div
         id="tour-accounts-stats"
-        className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-black mb-8"
+        className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-foreground mb-8"
       >
-        <div className="p-8 border-r border-b border-black">
-          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-4">
+        <div className="p-8 border-r border-b border-foreground">
+          <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-4">
             Total Assets
           </p>
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-black tracking-tighter">
-              {formatCurrencyLocal(totalAssets)}
+              {totalAssets}
             </h2>
             <ArrowUpRight size={20} className="text-zinc-300" />
           </div>
         </div>
-        <div className="p-8 border-r border-b border-black">
-          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-4">
+        <div className="p-8 border-r border-b border-foreground">
+          <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-4">
             Liabilities
           </p>
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-black tracking-tighter">
-              {formatCurrencyLocal(totalLiabilities)}
+              {totalLiabilities}
             </h2>
             <ArrowDownRight size={20} className="text-zinc-300" />
           </div>
         </div>
-        <div className="p-8 border-r border-b border-black bg-zinc-50">
-          <p className="text-xs font-black uppercase tracking-widest text-black mb-4">
+        <div className="p-8 border-r border-b border-foreground ">
+          <p className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-4">
             Net Worth
           </p>
           <h2 className="text-3xl font-black tracking-tighter">
-            {formatCurrencyLocal(netWorth)}
+            {netWorth}
           </h2>
         </div>
       </div>
@@ -348,7 +348,7 @@ export default function AccountsPage() {
                   onEdit={() => handleEdit(acc)}
                   onDelete={() => handleDelete(acc.id)}
                   onClick={() => router.push(`/dashboard/accounts/${acc.id}`)}
-                  className="text-zinc-400"
+                  className="text-foreground/69"
                 />
               ))}
             </List>
@@ -356,7 +356,7 @@ export default function AccountsPage() {
 
           <div
             id="tour-financial-ratio"
-            className="p-8 border border-black space-y-6"
+            className="p-8 border border-foreground space-y-6"
           >
             <h3 className="font-black uppercase tracking-widest text-xs">
               Financial Ratio
@@ -366,14 +366,14 @@ export default function AccountsPage() {
                 <span>Asset to Debt Ratio</span>
                 <span>{assetRatio}%</span>
               </div>
-              <div className="h-0.5 w-full bg-zinc-100">
+              <div className="h-0.5 w-full bg-foreground">
                 <div
-                  className="h-full bg-black transition-all duration-1000"
+                  className="h-full bg-foreground transition-all duration-1000"
                   style={{ width: `${assetRatio}%` }}
                 />
               </div>
             </div>
-            <p className="text-xs font-bold text-zinc-400 leading-relaxed uppercase">
+            <p className="text-xs font-bold text-foreground/69 leading-relaxed uppercase">
               {netWorth >= 0
                 ? "Positive financial position maintained."
                 : "Targeting debt reduction strategy."}
@@ -481,10 +481,10 @@ export default function AccountsPage() {
                   disabled
                 />
                 <div className="space-y-1">
-                  <label className="text-xs font-black uppercase tracking-widest text-zinc-400 block mb-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-foreground/69 block mb-2">
                     Est. Maturity Amount
                   </label>
-                  <div className="w-full border-b border-black/20 py-2 text-sm font-bold bg-zinc-50 uppercase">
+                  <div className="w-full border-b border-foreground/20 py-2 text-sm font-bold bg-zinc-50 uppercase">
                     {formatCurrencyLocal(
                       formData.maturityAmount,
                       formData.currency,

@@ -14,7 +14,7 @@ export default async function DashboardLayout({ children }) {
   }
 
   return (
-    <div className="flex h-screen font-sans text-black transition-colors duration-200">
+    <div className="flex h-screen font-sans transition-colors duration-200">
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0 w-full lg:w-auto">
         <TopBar />

@@ -451,7 +451,7 @@ export default function SettingsPage() {
   ];
 
   const labelClass =
-    "text-xs font-black uppercase tracking-widest text-zinc-400 mb-2 block";
+    "text-xs font-black uppercase tracking-widest text-foreground/69 mb-2 block";
   const inputClass =
     "w-full border-b border-foreground py-4 text-sm font-black focus:border-foreground outline-none transition-all bg-transparent uppercase placeholder-zinc-200";
 
@@ -466,14 +466,14 @@ export default function SettingsPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 border-t border-l border-foreground">
-        <div className="lg:col-span-3 border-r border-foreground divide-y divide-black">
+        <div className="lg:col-span-3 border-r border-foreground divide-y">
           {sections.map((section) => (
             <button
               key={section.id}
               onClick={() => setActiveSection(section.id)}
               className={`w-full flex items-center justify-between px-8 py-8 text-xs font-black uppercase tracking-widest transition-all ${
                 activeSection === section.id
-                  ? "bg-black text-white"
+                  ? "bg-foreground text-background"
                   : "hover:bg-muted/10"
               }`}
             >
@@ -491,7 +491,7 @@ export default function SettingsPage() {
           ))}
 
           <div className="p-8 border-b border-foreground">
-            <h3 className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-4">
+            <h3 className="text-xs font-black uppercase tracking-widest text-foreground/69 mb-4">
               Operations
             </h3>
             <button
@@ -529,7 +529,7 @@ export default function SettingsPage() {
                 <button
                   onClick={handleSave}
                   disabled={loading}
-                  className="px-10 py-4 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center gap-3 shadow-xl"
+                  className="px-10 py-4 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all flex items-center gap-3 shadow-xl"
                 >
                   {loading ? "Synchronizing..." : "Save Configuration"}
                   <Save size={14} />
@@ -559,7 +559,7 @@ export default function SettingsPage() {
                 <button
                   onClick={handleSave}
                   disabled={loading}
-                  className="px-10 py-4 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center gap-3 shadow-xl"
+                  className="px-10 py-4 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all flex items-center gap-3 shadow-xl"
                 >
                   {loading ? "Synchronizing..." : "Update Identity"}
                   <Save size={14} />
@@ -574,7 +574,7 @@ export default function SettingsPage() {
                 <h2 className="text-2xl font-black uppercase tracking-tighter italic">
                   Account Infrastructure
                 </h2>
-                <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
+                <p className="text-xs font-bold text-foreground/69 uppercase tracking-widest">
                   Define custom classifications for your financial accounts
                 </p>
               </div> */}
@@ -607,7 +607,7 @@ export default function SettingsPage() {
                   <button
                     onClick={handleAddAccountType}
                     disabled={loading || !newAccountTypeName.trim()}
-                    className="w-full md:w-auto px-8 py-4 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="w-full md:w-auto px-8 py-4 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     <Plus size={14} /> Add
                   </button>
@@ -623,8 +623,8 @@ export default function SettingsPage() {
                           onClick={() => setAccountTypeFilter(cat)}
                           className={`px-3 py-1 text-[8px] font-black uppercase tracking-widest border border-foreground transition-all ${
                             accountTypeFilter === cat
-                              ? "bg-black text-white"
-                              : "hover:bg-zinc-50"
+                              ? "bg-foreground text-background"
+                              : "hover:bg-muted50"
                           }`}
                         >
                           {cat}
@@ -643,7 +643,7 @@ export default function SettingsPage() {
                       .map((type) => (
                         <div
                           key={type.id}
-                          className="p-6 border border-foreground flex justify-between items-center group hover:bg-zinc-50 transition-all"
+                          className="p-6 border border-foreground flex justify-between items-center group hover:bg-muted50 transition-all"
                         >
                           <div className="flex items-center gap-3">
                             <span className="text-xs font-black uppercase tracking-widest">
@@ -659,7 +659,7 @@ export default function SettingsPage() {
                               {type.category}
                             </span>
                             {!type.userId && (
-                              <span className="px-2 py-0.5 bg-zinc-100 text-[8px] font-bold uppercase tracking-tighter text-zinc-400 border border-zinc-200">
+                              <span className="px-2 py-0.5 bg-foreground text-[8px] font-bold uppercase tracking-tighter text-foreground/69 border border-zinc-200">
                                 System
                               </span>
                             )}
@@ -700,7 +700,7 @@ export default function SettingsPage() {
                     key={step}
                     className={`flex-1 py-4 text-center text-xs font-black uppercase transition-all ${
                       importStep === step
-                        ? "bg-black text-white"
+                        ? "bg-foreground text-background"
                         : "text-zinc-300"
                     }`}
                   >
@@ -713,11 +713,11 @@ export default function SettingsPage() {
                 <div className="space-y-8 animate-in fade-in">
                   <label className={labelClass}>Initialization Source</label>
 
-                  <div className="bg-zinc-50 border-l-4 border-foreground p-6 space-y-4">
+                  <div className="bg-foreground border-l-4 border-foreground p-6 space-y-4">
                     <div className="flex items-start gap-3">
                       <HelpCircle
                         size={20}
-                        className="text-black mt-0.5 shrink-0"
+                        className="text-foreground mt-0.5 shrink-0"
                       />
                       <div className="flex-1">
                         <h4 className="text-xs font-black uppercase tracking-wider mb-2">
@@ -737,7 +737,7 @@ export default function SettingsPage() {
                         </p>
                         <button
                           onClick={downloadSampleCSV}
-                          className="flex items-center gap-2 px-4 py-2 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all"
+                          className="flex items-center gap-2 px-4 py-2 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all"
                         >
                           <Download size={14} />
                           Download Sample Template
@@ -751,8 +751,8 @@ export default function SettingsPage() {
                       onClick={() => setImportSource("file")}
                       className={`py-6 flex flex-col items-center gap-2 text-xs font-black uppercase ${
                         importSource === "file"
-                          ? "bg-black text-white"
-                          : "hover:bg-zinc-50"
+                          ? "bg-foreground text-background"
+                          : "hover:bg-muted50"
                       }`}
                     >
                       <Upload size={16} /> File Upload
@@ -761,8 +761,8 @@ export default function SettingsPage() {
                       onClick={() => setImportSource("text")}
                       className={`py-6 flex flex-col items-center gap-2 text-xs font-black uppercase ${
                         importSource === "text"
-                          ? "bg-black text-white"
-                          : "hover:bg-zinc-50"
+                          ? "bg-foreground text-background"
+                          : "hover:bg-muted50"
                       }`}
                     >
                       <FileText size={16} /> Raw String
@@ -774,8 +774,8 @@ export default function SettingsPage() {
                       }}
                       className={`py-6 flex flex-col items-center gap-2 text-xs font-black uppercase ${
                         importSource === "table"
-                          ? "bg-black text-white"
-                          : "hover:bg-zinc-50"
+                          ? "bg-foreground text-background"
+                          : "hover:bg-muted50"
                       }`}
                     >
                       <Table size={16} /> Table Entry
@@ -798,12 +798,12 @@ export default function SettingsPage() {
                       />
                       <Upload
                         size={24}
-                        className="mb-4 text-zinc-300 group-hover:text-black transition-all"
+                        className="mb-4 text-zinc-300 group-hover:text-foreground transition-all"
                       />
                       <span className="text-xs font-black uppercase tracking-widest">
                         Select .CSV Source
                       </span>
-                      <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">
+                      <p className="text-[9px] font-bold text-foreground/69 uppercase mt-2">
                         Data will be loaded into the table editor
                       </p>
                     </div>
@@ -823,13 +823,13 @@ export default function SettingsPage() {
                       <div className="flex items-center gap-4 mb-2">
                         <button
                           onClick={handleAddColumn}
-                          className="flex items-center gap-2 px-4 py-2 bg-zinc-100 hover:bg-zinc-200 text-xs font-black uppercase tracking-widest transition-all"
+                          className="flex items-center gap-2 px-4 py-2 bg-foreground text-background hover:bg-muted text-xs font-black uppercase tracking-widest transition-all"
                         >
                           <Plus size={12} /> Add Column
                         </button>
                         <button
                           onClick={handleAddRow}
-                          className="flex items-center gap-2 px-4 py-2 bg-zinc-100 hover:bg-zinc-200 text-xs font-black uppercase tracking-widest transition-all"
+                          className="flex items-center gap-2 px-4 py-2 bg-foreground text-background hover:bg-muted text-xs font-black uppercase tracking-widest transition-all"
                         >
                           <Plus size={12} /> Add Row
                         </button>
@@ -846,20 +846,20 @@ export default function SettingsPage() {
                               "Category",
                             ]);
                           }}
-                          className="flex items-center gap-2 px-4 py-2 bg-zinc-100 hover:bg-red-100 hover:text-red-600 text-xs font-black uppercase tracking-widest transition-all ml-auto"
+                          className="flex items-center gap-2 px-4 py-2 bg-foreground hover:bg-red-100 hover:text-red-600 text-xs font-black uppercase tracking-widest transition-all ml-auto"
                         >
                           <Trash2 size={12} /> Clear Table
                         </button>
                       </div>
 
                       <div className="overflow-x-auto border border-foreground">
-                        <table className="w-full text-left border-collapse">
-                          <thead>
+                        <table className="w-full text-left border-collapse ">
+                          <thead className="text-background">
                             <tr>
                               {tableData[0].map((header, colIndex) => (
                                 <th
                                   key={colIndex}
-                                  className="border-b-2 border-r border-foreground bg-zinc-50 p-0 min-w-37.5 relative group"
+                                  className="border-b-2 border-r border-background bg-foreground p-0 min-w-37.5 relative group"
                                 >
                                   <input
                                     type="text"
@@ -871,12 +871,12 @@ export default function SettingsPage() {
                                         e.target.value,
                                       )
                                     }
-                                    className="w-full h-full p-3 bg-transparent text-xs font-black uppercase outline-none focus:bg-white transition-all"
+                                    className="w-full h-full p-3 bg-transparent text-xs font-black uppercase outline-none focus:bg-foreground transition-all"
                                     placeholder={`HEADER ${colIndex + 1}`}
                                   />
                                   <button
                                     onClick={() => handleRemoveColumn(colIndex)}
-                                    className="absolute top-0 right-0 h-full px-2 text-zinc-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"
+                                    className="absolute top-0 right-0 h-full m-4 text-zinc-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"
                                     title="Remove Column"
                                   >
                                     <X size={12} />
@@ -903,11 +903,11 @@ export default function SettingsPage() {
                                           e.target.value,
                                         )
                                       }
-                                      className="w-full h-full p-3 text-xs font-mono outline-none focus:bg-zinc-50 transition-all"
+                                      className="w-full h-full p-3 text-xs font-mono outline-none  transition-all"
                                     />
                                   </td>
                                 ))}
-                                <td className="w-10 border-b border-foreground text-center">
+                                <td className="w-10 border-b border-foreground text-center p-4">
                                   <button
                                     onClick={() =>
                                       handleRemoveRow(rowIndex + 1)
@@ -923,7 +923,7 @@ export default function SettingsPage() {
                           </tbody>
                         </table>
                       </div>
-                      <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
+                      <p className="text-xs font-bold text-foreground/69 uppercase tracking-widest">
                         {tableData.length - 1} Data Rows • {tableData[0].length}
                         Columns
                       </p>
@@ -997,7 +997,7 @@ export default function SettingsPage() {
                     </div>
                     <button
                       onClick={handleAddRow}
-                      className="flex items-center gap-2 px-4 py-2 bg-zinc-100 hover:bg-zinc-200 text-xs font-black uppercase tracking-widest transition-all"
+                      className="flex items-center gap-2 px-4 py-2 bg-foreground hover:bg-muted200 text-xs font-black uppercase tracking-widest transition-all"
                     >
                       <Plus size={12} /> Add Row
                     </button>
@@ -1018,10 +1018,10 @@ export default function SettingsPage() {
                             return (
                               <th
                                 key={i}
-                                className="border-b-2 border-r border-foreground bg-zinc-50 p-3 text-xs font-black uppercase tracking-widest min-w-37.5"
+                                className="border-b-2 border-r border-foreground bg-foreground p-3 text-xs font-black uppercase tracking-widest min-w-37.5"
                               >
                                 <div className="flex flex-col gap-1">
-                                  <span className="text-[8px] text-zinc-400">
+                                  <span className="text-[8px] text-foreground/69">
                                     {mappedLabel}
                                   </span>
                                   <input
@@ -1036,15 +1036,15 @@ export default function SettingsPage() {
                               </th>
                             );
                           })}
-                          <th className="border-b-2 border-foreground bg-zinc-50 p-3 text-xs font-black uppercase tracking-widest min-w-50">
+                          <th className="border-b-2 border-foreground bg-foreground p-3 text-xs font-black uppercase tracking-widest min-w-50">
                             Target Account
                           </th>
-                          <th className="border-b-2 border-foreground bg-zinc-50 p-3 w-10"></th>
+                          <th className="border-b-2 border-foreground bg-foreground p-3 w-10"></th>
                         </tr>
                       </thead>
                       <tbody>
                         {tableData.slice(1).map((row, rowIndex) => (
-                          <tr key={rowIndex} className="group hover:bg-zinc-50">
+                          <tr key={rowIndex} className="group hover:bg-muted50">
                             {row.map((cell, cellIndex) => (
                               <td
                                 key={cellIndex}
@@ -1097,7 +1097,7 @@ export default function SettingsPage() {
                       </tbody>
                     </table>
                   </div>
-                  <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
+                  <p className="text-xs font-bold text-foreground/69 uppercase tracking-widest">
                     Edit data directly in the table. Map specific transactions
                     to accounts.
                   </p>
@@ -1114,7 +1114,7 @@ export default function SettingsPage() {
                       Ready for Data Import
                     </h3>
                     {/* TODO : before sending to backend here i wanna verify that everything is good and can be sent to the backend */}
-                    {/* <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-2">
+                    {/* <p className="text-xs font-bold text-foreground/69 uppercase tracking-widest mt-2">
                       Data mapping verified. System stands by for write
                       operation.
                     </p> */}
@@ -1148,7 +1148,7 @@ export default function SettingsPage() {
                       ? handleImport()
                       : setImportStep((prev) => prev + 1);
                   }}
-                  className="px-10 py-4 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center gap-3 shadow-xl"
+                  className="px-10 py-4 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all flex items-center gap-3 shadow-xl"
                 >
                   {importStep === 4 ? "Initialize Injection" : "Next Phase"}
                   <ArrowRight size={14} />
@@ -1166,31 +1166,31 @@ export default function SettingsPage() {
               </div> */}
 
               <div className="space-y-12">
-                <div className="flex items-center justify-between p-6 border border-foreground group hover:bg-zinc-50 transition-all">
+                <div className="flex items-center justify-between p-6 border border-foreground group hover:bg-muted50 transition-all">
                   <div>
                     <h3 className="text-xs font-black uppercase">
                       Email Alerts
                     </h3>
-                    <p className="text-xs font-bold text-zinc-400 uppercase mt-1">
+                    <p className="text-xs font-bold text-foreground/69 uppercase mt-1">
                       Receive bill detected & weekly summaries via email
                     </p>
                   </div>
                   <button
                     onClick={() => setNotifEmail(!notifEmail)}
                     className={`w-12 h-6 border-2 border-foreground relative transition-all ${
-                      notifEmail ? "bg-black" : "bg-white"
+                      notifEmail ? "bg-foreground" : "bg-white"
                     }`}
                   >
                     <div
                       className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 transition-all ${
-                        notifEmail ? "right-1 bg-white" : "left-1 bg-black"
+                        notifEmail ? "right-1 bg-white" : "left-1 bg-foreground"
                       }`}
                     />
                   </button>
                 </div>
 
                 {notifEmail && (
-                  <div className="p-6 border-l-2 border-foreground bg-zinc-50 space-y-4 animate-in fade-in slide-in-from-left-2">
+                  <div className="p-6 border-l-2 border-foreground bg-foreground space-y-4 animate-in fade-in slide-in-from-left-2">
                     <label className={labelClass}>
                       Notification Destination Email
                     </label>
@@ -1201,7 +1201,7 @@ export default function SettingsPage() {
                       className={inputClass}
                       placeholder="ENTER EMAIL (LEAVE BLANK FOR DEFAULT)"
                     />
-                    <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">
+                    <p className="text-[9px] font-bold text-foreground/69 uppercase mt-2">
                       If left blank, alerts will be sent to your account email:
                       {user?.email}
                     </p>
@@ -1209,31 +1209,31 @@ export default function SettingsPage() {
                 )}
 
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-6 border border-foreground group hover:bg-zinc-50 transition-all">
+                  <div className="flex items-center justify-between p-6 border border-foreground group hover:bg-muted50 transition-all">
                     <div>
                       <h3 className="text-xs font-black uppercase">
                         Push Notifications (ntfy)
                       </h3>
-                      <p className="text-xs font-bold text-zinc-400 uppercase mt-1">
+                      <p className="text-xs font-bold text-foreground/69 uppercase mt-1">
                         Get real-time push alerts on your phone
                       </p>
                     </div>
                     <button
                       onClick={() => setNotifNtfy(!notifNtfy)}
                       className={`w-12 h-6 border-2 border-foreground relative transition-all ${
-                        notifNtfy ? "bg-black" : "bg-white"
+                        notifNtfy ? "bg-foreground" : "bg-white"
                       }`}
                     >
                       <div
                         className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 transition-all ${
-                          notifNtfy ? "right-1 bg-white" : "left-1 bg-black"
+                          notifNtfy ? "right-1 bg-white" : "left-1 bg-foreground"
                         }`}
                       />
                     </button>
                   </div>
 
                   {notifNtfy && (
-                    <div className="p-6 border-l-2 border-foreground bg-zinc-50 space-y-4 animate-in fade-in slide-in-from-left-2">
+                    <div className="p-6 border-l-2 border-foreground bg-foreground space-y-4 animate-in fade-in slide-in-from-left-2">
                       <label className={labelClass}>ntfy.sh Topic URL</label>
                       <input
                         type="url"
@@ -1242,7 +1242,7 @@ export default function SettingsPage() {
                         className={inputClass}
                         placeholder="HTTPS://NTFY.SH/YOUR_PRIVATE_TOPIC"
                       />
-                      <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">
+                      <p className="text-[9px] font-bold text-foreground/69 uppercase mt-2">
                         Download the ntfy app and subscribe to this topic to
                         receive alerts.
                       </p>
@@ -1253,7 +1253,7 @@ export default function SettingsPage() {
                 <button
                   onClick={handleSave}
                   disabled={loading}
-                  className="px-10 py-4 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center gap-3 shadow-xl"
+                  className="px-10 py-4 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all flex items-center gap-3 shadow-xl"
                 >
                   {loading ? "Synchronizing..." : "Save Notification Settings"}
                   <Save size={14} />
@@ -1270,13 +1270,13 @@ export default function SettingsPage() {
                 </h2>
               </div> */}
               <div className="space-y-8">
-                <p className="text-xs font-bold uppercase tracking-widest text-zinc-400 leading-relaxed">
+                <p className="text-xs font-bold uppercase tracking-widest text-foreground/69 leading-relaxed">
                   Resetting tours will re-enable the guided walkthroughs for all
                   platform modules.
                 </p>
                 <button
                   onClick={handleRestartTours}
-                  className="px-10 py-4 bg-black text-white text-xs font-black uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center gap-3 shadow-xl"
+                  className="px-10 py-4 bg-foreground text-background text-xs font-black uppercase tracking-widest hover:bg-muted800 transition-all flex items-center gap-3 shadow-xl"
                 >
                   Restart All Walkthroughs
                   <RefreshCw size={14} />

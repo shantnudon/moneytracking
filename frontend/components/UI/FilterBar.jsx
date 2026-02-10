@@ -23,15 +23,15 @@ export default function FilterBar({
 
   return (
     <div
-      className={`grid grid-cols-1 lg:grid-cols-12 border border-black mb-4 ${className}`}
+      className={`grid grid-cols-1 lg:grid-cols-12 border border-foreground mb-4 ${className}`}
     >
       {showSearch && (
         <div
           className={`${
             showDateRange ? "lg:col-span-4" : "lg:col-span-6"
-          } border-r border-black p-4 flex items-center gap-3`}
+          } border-r border-foreground p-4 flex items-center gap-3`}
         >
-          <Search size={16} className="text-zinc-400" />
+          <Search size={16} className="text-foreground/69" />
           <input
             type="text"
             placeholder="SEARCH..."
@@ -47,7 +47,7 @@ export default function FilterBar({
         <div
           className={`${
             showSearch ? "lg:col-span-5" : "lg:col-span-6"
-          } border-r border-black p-4 flex items-center justify-between gap-4`}
+          } border-r border-foreground p-4 flex items-center justify-between gap-4`}
         >
           <div className="flex items-center gap-2">
             <input
@@ -70,12 +70,12 @@ export default function FilterBar({
           </div>
           <div className="flex gap-2">
             {onFilter && (
-              <button onClick={onFilter} className="p-1 hover:bg-zinc-100">
+              <button onClick={onFilter} className="p-1 hover:bg-muted100">
                 <Filter size={14} />
               </button>
             )}
             {onClearFilter && (dateRange?.startDate || searchQuery) && (
-              <button onClick={onClearFilter} className="p-1 hover:bg-zinc-100">
+              <button onClick={onClearFilter} className="p-1 hover:bg-muted100">
                 <X size={14} />
               </button>
             )}
@@ -91,8 +91,8 @@ export default function FilterBar({
               onClick={() => onTabChange(tab.value)}
               className={`flex-1 text-xs font-black uppercase tracking-tighter transition-all ${
                 activeTab === tab.value
-                  ? "bg-black text-white"
-                  : "hover:bg-zinc-50"
+                  ? "bg-foreground text-background"
+                  : "hover:bg-muted50"
               }`}
             >
               {tab.label}
