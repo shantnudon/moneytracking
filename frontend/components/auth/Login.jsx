@@ -13,7 +13,7 @@ const Login = ({ onLogin }) => {
   return (
     <div className="w-full h-full flex flex-col justify-center p-10 bg-white border border-black transition-all">
       <div className="mb-10">
-        <h2 className="text-3xl font-black uppercase tracking-tighter italic">
+        <h2 className="text-3xl dark:text-background font-black uppercase tracking-tighter italic">
           Authenticate
         </h2>
         <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-2">
@@ -21,7 +21,7 @@ const Login = ({ onLogin }) => {
         </p>
       </div>
 
-      <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-8 dark:text-background" onSubmit={handleSubmit}>
         <div className="space-y-1">
           <label className="text-xs font-black uppercase tracking-widest text-zinc-400">
             Email
@@ -29,7 +29,8 @@ const Login = ({ onLogin }) => {
           <input
             className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all uppercase placeholder-zinc-200"
             name="email"
-            placeholder="USER@DOMAIN.COM"
+            placeholder="tonymontana@scarface.com"
+            autoComplete="email"
             type="email"
             required
           />
@@ -52,6 +53,7 @@ const Login = ({ onLogin }) => {
             className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all placeholder-zinc-200"
             name="password"
             placeholder="••••••••"
+            autoComplete="current-password"
             type="password"
             required
           />

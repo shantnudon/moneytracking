@@ -98,7 +98,7 @@ export default function Sidebar() {
               <div className="w-8 h-8 bg-foreground text-background flex items-center justify-center font-black italic text-lg">
                 M
               </div>
-              <span className="text-xs font-black tracking-widest uppercase italic">
+              <span className="text-xs font-black text-foreground tracking-widest uppercase italic">
                 <Link href={`/dashboard`}>MoneyTracker</Link>
               </span>
             </div>
@@ -149,10 +149,10 @@ export default function Sidebar() {
           </nav>
         </div>
 
-        <div className="border-t border-(--foreground) divide-y divide-(--foreground)">
+        <div className="border-t border-foreground divide-y divide-foreground">
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="hidden lg:flex w-full items-center px-8 py-6 hover:bg-muted/10 transition-colors"
+            className="hidden lg:flex w-full items-center px-8 py-6 text-foreground hover:bg-muted/10 transition-colors"
           >
             {isCollapsed ? (
               <ChevronRight size={16} />
@@ -165,7 +165,7 @@ export default function Sidebar() {
 
           <button
             onClick={toggleTheme}
-            className="w-full flex items-center gap-4 px-8 py-6 text-xs font-black uppercase tracking-widest hover:bg-muted/10 transition-all group"
+            className="w-full flex items-center gap-4 px-8 py-6 text-xs font-black uppercase tracking-widest text-foreground hover:bg-muted/10 transition-all group"
           >
             {theme === "light" ? (
               <>
@@ -182,7 +182,7 @@ export default function Sidebar() {
 
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-4 px-8 py-6 text-xs font-black uppercase tracking-widest hover:bg-muted/10 transition-all group"
+            className="w-full flex items-center gap-4 px-8 py-6 text-xs font-black uppercase tracking-widest text-foreground hover:bg-muted/10 transition-all group"
           >
             <LogOut size={18} />
             {!isCollapsed && <span>Logout</span>}

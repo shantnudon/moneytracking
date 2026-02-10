@@ -47,9 +47,9 @@ const Signup = ({ onSignup }) => {
   ];
 
   return (
-    <div className="w-full h-auto flex flex-col justify-center p-10 bg-white border border-black transition-all">
-      <div className="mb-8">
-        <h2 className="text-3xl font-black italic uppercase tracking-tighter">
+    <div className="w-full h-full flex flex-col justify-center p-10 bg-white border border-black transition-all">
+      <div className="mb-10">
+        <h2 className="text-3xl dark:text-background font-black uppercase tracking-tighter italic">
           Register
         </h2>
         <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-2">
@@ -57,15 +57,16 @@ const Signup = ({ onSignup }) => {
         </p>
       </div>
 
-      <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-        <div className="space-y-1">
-          <label className="text-xs font-black uppercase tracking-widest text-zinc-400">
+      <form className="flex flex-col gap-6 dark:text-background " onSubmit={handleSubmit}>
+        <div className="space-y-1 ">
+          <label className="text-xs font-black uppercase tracking-widest text-zinc-400 ">
             Full Name
           </label>
           <input
-            className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all uppercase placeholder-zinc-200"
+            className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all uppercase placeholder-zinc-200 "
             name="name"
             placeholder="E.G. TONY MONTANA"
+            autoComplete="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -80,7 +81,8 @@ const Signup = ({ onSignup }) => {
           <input
             className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all uppercase placeholder-zinc-200"
             name="email"
-            placeholder="tonymontana@scarface.COM"
+            placeholder="tonymontana@scarface.com"
+            autoComplete="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -95,6 +97,7 @@ const Signup = ({ onSignup }) => {
           <input
             className="w-full border-b border-black/20 py-2 text-sm font-black focus:border-black outline-none transition-all placeholder-zinc-200"
             name="password"
+            autoComplete="new-password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

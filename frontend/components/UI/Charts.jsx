@@ -18,7 +18,7 @@ export function ChartContainer({
   className = "",
 }) {
   return (
-    <div className={`space-y-6 ${className}`}>
+    <div className={`space-y-6 ${className} w-full h-80`}>
       {(title || action) && (
         <div className="flex items-center justify-between">
           {title && (

@@ -145,7 +145,7 @@ export default function DashboardPage() {
 
   const netWorth = totalBalance - totalLiabilities;
 
-  console.log(totalBalance);
+  // console.log(totalBalance);
 
   const totalBudgetAmount = budgets.reduce(
     (sum, b) => sum + parseFloat(b.amount),
@@ -178,7 +178,7 @@ export default function DashboardPage() {
       <Tour steps={dashboardSteps} tourKey="dashboard" />
       <div
         id="tour-header"
-        className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-foreground/10"
+        className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-foreground"
       >
         <div>
           <h1 className="text-4xl font-black tracking-tighter uppercase italic">
