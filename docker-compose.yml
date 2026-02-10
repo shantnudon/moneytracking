@@ -1,0 +1,72 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: moneytracker-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-moneytracker}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - moneytracker-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    # build:
+    #   context: .
+    #   dockerfile: docker/Dockerfile.backend
+    image: moneytracking/backend:0.2
+    container_name: moneytracker-backend
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-moneytracker}?schema=public
+      BACKEND_PORT: 3010
+      DB_HOST: postgres
+      DB_PORT: 5432
+      JWT_SECRET: ${JWT_SECRET:-supersecret}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      NODE_ENV: production
+    ports:
+      - "3010:3010"
+    networks:
+      - moneytracker-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3010/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  frontend:
+    # build:
+    #   context: .
+    #   dockerfile: docker/Dockerfile.frontend
+    image: moneytracking-frontend:0.1
+    container_name: moneytracker-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      NEXT_PUBLIC_API_URL: "http://backend:3010/api"
+    ports:
+      - "3000:3000"
+    networks:
+      - moneytracker-network
+    restart: unless-stopped
+
+networks:
+  moneytracker-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

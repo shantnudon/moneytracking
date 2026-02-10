@@ -1,0 +1,28 @@
+# docker compose -f docker-compose.dev.yml  up -d
+# docker compose -f docker-compose.dev.yml down
+
+services:
+  db:
+    image: postgres:18-alpine
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: don
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: xxx
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: strong
+    ports:
+      - "8080:80" 
+    volumes:
+      - ./pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - db 
